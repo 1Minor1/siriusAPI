@@ -1,0 +1,35 @@
+{
+  "name": "siriusd-rpc",
+  "description": "sirius Client Library to connect to sirius Core via RPC",
+  "version": "0.0.3",
+  "author": {},
+  "contributors": [],
+  "keywords": [
+    "sirius",
+    "rpc"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siriusproject/siriusd-rpc.git"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha test -R spec",
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- --recursive"
+  },
+  "devDependencies": {
+    "async": "^0.9.0",
+    "chai": "^1.10.0",
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.5",
+    "mocha": "^2.1.0",
+    "sinon": "^1.12.2"
+  },
+  "bugs": {
+    "url": "https://github.com/siriusproject/siriusd-rpc/issues"
+  },
+  "homepage": "https://github.com/siriusproject/siriusd-rpc",
+  "directories": {},
+  "readme": "ERROR: No README data found!"
+}
