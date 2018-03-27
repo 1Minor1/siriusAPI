@@ -1,5 +1,5 @@
 # SiriusAPI
-Projects ported from QTUM to support the Insight API.
+Projects ported from Bitcore to support the Insight API.
 These scripts assume you cloned this repository into a folder called `projects` in your home directory.
 
 ## Dependencies
