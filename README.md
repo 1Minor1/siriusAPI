@@ -45,9 +45,8 @@ Edit `siriuscore-node.json` with something similar to:
   "services": [
     "siriusd",
     "web",
-    "insight-api",
-    "insight-ui",
-    "<additional_service>"
+    "sirius-insight-api",
+    "sirius-explorer"
   ],
   "servicesConfig": {
     "siriusd": {
