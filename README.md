@@ -18,6 +18,11 @@ cd ~/projects/siriusAPI/siriuscore-node/node_modules/
 ln -s ~/projects/siriusAPI/siriuscore-lib
 ln -s ~/projects/siriusAPI/siriusd-rpc
 ```
+And then the link for the **sirius-insight-api** node_modules directory:
+```bash
+cd ~/projects/siriusAPI/sirius-insight-api/node_modules/
+ln -s ~/projects/siriusAPI/siriuscore-lib
+```
 
 ## Running a Development Node (siriuscore-node)
 
