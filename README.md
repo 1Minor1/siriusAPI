@@ -12,7 +12,10 @@ After a successful build of the sirius wallet, you need to create a link to the 
 cd ~/projects/siriusAPI/siriuscore-node/bin
 ln -sf ~/projects/sirius/src/siriusd
 ```
-Also add the inter-project dependencies in the **siriuscore-node** node_modules directory:
+Run ```npm install``` in all of the project folders. Then delete the folders and replace with links as specified below.
+
+
+Add the inter-project dependencies in the **siriuscore-node** node_modules directory:
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/node_modules/
 ln -s ~/projects/siriusAPI/siriuscore-lib
