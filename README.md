@@ -10,7 +10,7 @@ Everything also depends on the siriuscore wallet here: https://github.com/sirius
 After a successful build of the sirius wallet, you need to create a link to the sirius daemon in the bin folder of the **siriuscore-node** project. Eg:
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/bin
-ln -sf ~/projects/sirius/src/siriusd
+ln -sf ~/sirius/src/siriusd
 ```
 Run ```npm install``` in all of the project folders. Then delete the folders and replace with links as specified below.
 
