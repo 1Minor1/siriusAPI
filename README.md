@@ -2,7 +2,21 @@
 Projects ported from Bitcore to support the Insight API.
 These scripts assume you cloned this repository into a folder called `projects` in your home directory.
 
-## Dependencies
+## Getting Started
+```bash
+sudo apt-get install -y build-essential
+sudo apt-get install libzmq3-dev
+sudo npm install mocha -g
+```
+Install nvm https://github.com/creationix/nvm  
+
+```bash
+nvm i v6
+nvm use v6
+```  
+Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+## Project Dependencies
 **sirius-explorer** requires the **sirius-insight-api** that runs on **siriuscore-node** that has dependencies on **siriuscore-lib** and **siriusd-rpc**
 
 Everything also depends on the siriuscore wallet here: https://github.com/siriuscore/sirius
@@ -28,6 +42,12 @@ ln -s ~/projects/siriusAPI/siriuscore-lib
 ```
 
 ## Running a Development Node (siriuscore-node)
+
+First run the siriuscore-node test and build the project.
+```bash
+cd ~/projects/siriusAPI/siriuscore-node
+
+```
 
 To test running the node, you can setup a configuration that will specify development versions of all of the services:
 
