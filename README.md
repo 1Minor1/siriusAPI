@@ -3,16 +3,15 @@ Projects ported from Bitcore to support the Insight API.
 These scripts assume you cloned this repository into a folder called `projects` in your home directory.
 
 ## Getting Started
-```bash
-sudo apt-get install -y build-essential
-sudo apt-get install libzmq3-dev
-sudo npm install mocha -g
-```
+
 Install nvm https://github.com/creationix/nvm  
 
 ```bash
 nvm i v6
 nvm use v6
+sudo apt-get install -y build-essential
+sudo apt-get install libzmq3-dev
+sudo npm install mocha -g
 ```  
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
