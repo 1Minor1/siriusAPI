@@ -12,6 +12,8 @@ nvm use v6
 sudo apt-get install -y build-essential
 sudo apt-get install libzmq3-dev
 sudo npm install mocha -g
+sudo npm install touch -g
+sudo npm install gulp-cli -g
 ```  
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
@@ -25,7 +27,26 @@ After a successful build of the sirius wallet, you need to create a link to the 
 cd ~/projects/siriusAPI/siriuscore-node/bin
 ln -sf ~/sirius/src/siriusd
 ```
-Run ```npm install``` in all of the project folders. Then delete the folders and replace with links as specified below.
+
+Run **npm install** in all of the project folders.
+```bash
+cd ~/projects/siriusAPI/siriusd-rpc
+npm install
+
+cd ~/projects/siriusAPI/siriuscore-lib
+npm install
+
+cd ~/projects/siriusAPI/siriuscore-node
+npm install
+
+cd ~/projects/siriusAPI/sirius-insight-api
+npm install
+
+cd ~/projects/siriusAPI/sirius-explorer
+npm install
+```
+
+Then create links as specified below.
 
 
 Add the inter-project dependencies in the **siriuscore-node** node_modules directory:
@@ -40,18 +61,19 @@ cd ~/projects/siriusAPI/sirius-insight-api/node_modules/
 ln -s ~/projects/siriusAPI/siriuscore-lib
 ```
 
-## Running a Development Node (siriuscore-node)
-
-First run the siriuscore-node test and build the project.
+Run the siriuscore-node test and build the project.
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node
-
+npm run regtest
+npm run test
 ```
+
+## Running a Development Node (siriuscore-node)
 
 To test running the node, you can setup a configuration that will specify development versions of all of the services:
 
 ```bash
-cd ~
+cd ~/projects
 mkdir devnode
 cd devnode
 mkdir node_modules
@@ -116,6 +138,6 @@ logevents=1
 
 From within the `devnode` directory with the configuration file, start the node:
 ```bash
-../projects/siriusAPI/siriuscore-node/bin/siriuscore-node start
+../siriusAPI/siriuscore-node/bin/siriuscore-node start
 ```
 
