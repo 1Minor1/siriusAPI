@@ -157,3 +157,10 @@ From within the `devnode` directory with the configuration file, start the node:
 ../siriusAPI/siriuscore-node/bin/siriuscore-node start
 ```
 
+Test the insight API:
+http://localhost:3001/sirius-insight-api/status
+
+Open the Block Explorer:
+http://localhost:3001/sirius-explorer/
+
+
