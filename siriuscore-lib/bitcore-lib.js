@@ -11317,7 +11317,7 @@ URI.prototype.inspect = function() {
 
 module.exports = URI;
 
-},{"./address":1,"./unit":40,"lodash":195,"url":252}],42:[function(require,module,exports){
+},{"./address":1,"./unit":40,"lodash":195,"url":253}],42:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -11694,7 +11694,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":45,"inherits":192,"vm":257}],47:[function(require,module,exports){
+},{"../asn1":45,"inherits":192,"vm":258}],47:[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -17276,7 +17276,7 @@ var objectKeys = Object.keys || function (obj) {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"util/":256}],61:[function(require,module,exports){
+},{"util/":257}],61:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -19981,7 +19981,7 @@ AES.prototype.scrub = function () {
 
 module.exports.AES = AES
 
-},{"safe-buffer":241}],66:[function(require,module,exports){
+},{"safe-buffer":242}],66:[function(require,module,exports){
 var aes = require('./aes')
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('cipher-base')
@@ -20100,7 +20100,7 @@ StreamCipher.prototype.setAAD = function setAAD (buf) {
 
 module.exports = StreamCipher
 
-},{"./aes":65,"./ghash":70,"./incr32":71,"buffer-xor":113,"cipher-base":115,"inherits":192,"safe-buffer":241}],67:[function(require,module,exports){
+},{"./aes":65,"./ghash":70,"./incr32":71,"buffer-xor":113,"cipher-base":115,"inherits":192,"safe-buffer":242}],67:[function(require,module,exports){
 var ciphers = require('./encrypter')
 var deciphers = require('./decrypter')
 var modes = require('./modes/list.json')
@@ -20238,7 +20238,7 @@ function createDecipher (suite, password) {
 exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
-},{"./aes":65,"./authCipher":66,"./modes":78,"./streamCipher":81,"cipher-base":115,"evp_bytestokey":174,"inherits":192,"safe-buffer":241}],69:[function(require,module,exports){
+},{"./aes":65,"./authCipher":66,"./modes":78,"./streamCipher":81,"cipher-base":115,"evp_bytestokey":174,"inherits":192,"safe-buffer":242}],69:[function(require,module,exports){
 var MODES = require('./modes')
 var AuthCipher = require('./authCipher')
 var Buffer = require('safe-buffer').Buffer
@@ -20354,7 +20354,7 @@ function createCipher (suite, password) {
 exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
-},{"./aes":65,"./authCipher":66,"./modes":78,"./streamCipher":81,"cipher-base":115,"evp_bytestokey":174,"inherits":192,"safe-buffer":241}],70:[function(require,module,exports){
+},{"./aes":65,"./authCipher":66,"./modes":78,"./streamCipher":81,"cipher-base":115,"evp_bytestokey":174,"inherits":192,"safe-buffer":242}],70:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var ZEROES = Buffer.alloc(16, 0)
 
@@ -20445,7 +20445,7 @@ GHASH.prototype.final = function (abl, bl) {
 
 module.exports = GHASH
 
-},{"safe-buffer":241}],71:[function(require,module,exports){
+},{"safe-buffer":242}],71:[function(require,module,exports){
 function incr32 (iv) {
   var len = iv.length
   var item
@@ -20516,7 +20516,7 @@ exports.encrypt = function (self, data, decrypt) {
   return out
 }
 
-},{"buffer-xor":113,"safe-buffer":241}],74:[function(require,module,exports){
+},{"buffer-xor":113,"safe-buffer":242}],74:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
@@ -20560,7 +20560,7 @@ exports.encrypt = function (self, chunk, decrypt) {
   return out
 }
 
-},{"safe-buffer":241}],75:[function(require,module,exports){
+},{"safe-buffer":242}],75:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
@@ -20587,7 +20587,7 @@ exports.encrypt = function (self, chunk, decrypt) {
   return out
 }
 
-},{"safe-buffer":241}],76:[function(require,module,exports){
+},{"safe-buffer":242}],76:[function(require,module,exports){
 var xor = require('buffer-xor')
 var Buffer = require('safe-buffer').Buffer
 var incr32 = require('../incr32')
@@ -20619,7 +20619,7 @@ exports.encrypt = function (self, chunk) {
   return xor(chunk, pad)
 }
 
-},{"../incr32":71,"buffer-xor":113,"safe-buffer":241}],77:[function(require,module,exports){
+},{"../incr32":71,"buffer-xor":113,"safe-buffer":242}],77:[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -20890,7 +20890,7 @@ StreamCipher.prototype._final = function () {
 
 module.exports = StreamCipher
 
-},{"./aes":65,"cipher-base":115,"inherits":192,"safe-buffer":241}],82:[function(require,module,exports){
+},{"./aes":65,"cipher-base":115,"inherits":192,"safe-buffer":242}],82:[function(require,module,exports){
 var ebtk = require('evp_bytestokey')
 var aes = require('browserify-aes/browser')
 var DES = require('browserify-des')
@@ -21346,7 +21346,7 @@ module.exports = {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./algorithms.json":88,"./sign":91,"./verify":92,"buffer":114,"create-hash":135,"inherits":192,"stream":250}],91:[function(require,module,exports){
+},{"./algorithms.json":88,"./sign":91,"./verify":92,"buffer":114,"create-hash":135,"inherits":192,"stream":251}],91:[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -25444,33 +25444,40 @@ utils.intFromLE = intFromLE;
 module.exports={
   "_args": [
     [
-      "elliptic@6.4.0",
-      "/mnt/d/Projects/ubuntu/siriuscore-lib"
+      {
+        "raw": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+        "spec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+        "type": "remote"
+      },
+      "/mnt/d/Projects/ubuntu/siriusAPI/siriuscore-lib"
     ]
   ],
-  "_development": true,
-  "_from": "elliptic@6.4.0",
+  "_from": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_id": "elliptic@6.4.0",
-  "_inBundle": false,
-  "_integrity": "sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=",
+  "_inCache": true,
   "_location": "/browserify-sign/elliptic",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "elliptic@6.4.0",
-    "name": "elliptic",
+    "raw": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+    "scope": null,
     "escapedName": "elliptic",
-    "rawSpec": "6.4.0",
-    "saveSpec": null,
-    "fetchSpec": "6.4.0"
+    "name": "elliptic",
+    "rawSpec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+    "spec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+    "type": "remote"
   },
   "_requiredBy": [
     "/browserify-sign"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
-  "_spec": "6.4.0",
-  "_where": "/mnt/d/Projects/ubuntu/siriuscore-lib",
+  "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
+  "_shrinkwrap": null,
+  "_spec": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+  "_where": "/mnt/d/Projects/ubuntu/siriusAPI/siriuscore-lib",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -25517,6 +25524,9 @@ module.exports={
   "license": "MIT",
   "main": "lib/elliptic.js",
   "name": "elliptic",
+  "optionalDependencies": {},
+  "readme": "# Elliptic [![Build Status](https://secure.travis-ci.org/indutny/elliptic.png)](http://travis-ci.org/indutny/elliptic) [![Coverage Status](https://coveralls.io/repos/indutny/elliptic/badge.svg?branch=master&service=github)](https://coveralls.io/github/indutny/elliptic?branch=master) [![Code Climate](https://codeclimate.com/github/indutny/elliptic/badges/gpa.svg)](https://codeclimate.com/github/indutny/elliptic)\n\n[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/gh-indutny-elliptic.svg)](https://saucelabs.com/u/gh-indutny-elliptic)\n\nFast elliptic-curve cryptography in a plain javascript implementation.\n\nNOTE: Please take a look at http://safecurves.cr.yp.to/ before choosing a curve\nfor your cryptography operations.\n\n## Incentive\n\nECC is much slower than regular RSA cryptography, the JS implementations are\neven more slower.\n\n## Benchmarks\n\n```bash\n$ node benchmarks/index.js\nBenchmarking: sign\nelliptic#sign x 262 ops/sec ±0.51% (177 runs sampled)\neccjs#sign x 55.91 ops/sec ±0.90% (144 runs sampled)\n------------------------\nFastest is elliptic#sign\n========================\nBenchmarking: verify\nelliptic#verify x 113 ops/sec ±0.50% (166 runs sampled)\neccjs#verify x 48.56 ops/sec ±0.36% (125 runs sampled)\n------------------------\nFastest is elliptic#verify\n========================\nBenchmarking: gen\nelliptic#gen x 294 ops/sec ±0.43% (176 runs sampled)\neccjs#gen x 62.25 ops/sec ±0.63% (129 runs sampled)\n------------------------\nFastest is elliptic#gen\n========================\nBenchmarking: ecdh\nelliptic#ecdh x 136 ops/sec ±0.85% (156 runs sampled)\n------------------------\nFastest is elliptic#ecdh\n========================\n```\n\n## API\n\n### ECDSA\n\n```javascript\nvar EC = require('elliptic').ec;\n\n// Create and initialize EC context\n// (better do it once and reuse it)\nvar ec = new EC('secp256k1');\n\n// Generate keys\nvar key = ec.genKeyPair();\n\n// Sign message (must be an array, or it'll be treated as a hex sequence)\nvar msg = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];\nvar signature = key.sign(msg);\n\n// Export DER encoded signature in Array\nvar derSign = signature.toDER();\n\n// Verify signature\nconsole.log(key.verify(msg, derSign));\n\n// CHECK WITH NO PRIVATE KEY\n\n// Public key as '04 + x + y'\nvar pub = '04bb1fa3...';\n\n// Signature MUST be either:\n// 1) hex-string of DER-encoded signature; or\n// 2) DER-encoded signature as buffer; or\n// 3) object with two hex-string properties (r and s)\n\nvar signature = 'b102ac...'; // case 1\nvar signature = new Buffer('...'); // case 2\nvar signature = { r: 'b1fc...', s: '9c42...' }; // case 3\n\n// Import public key\nvar key = ec.keyFromPublic(pub, 'hex');\n\n// Verify signature\nconsole.log(key.verify(msg, signature));\n```\n\n### EdDSA\n\n```javascript\nvar EdDSA = require('elliptic').eddsa;\n\n// Create and initialize EdDSA context\n// (better do it once and reuse it)\nvar ec = new EdDSA('ed25519');\n\n// Create key pair from secret\nvar key = ec.keyFromSecret('693e3c...'); // hex string, array or Buffer\n\n// Sign message (must be an array, or it'll be treated as a hex sequence)\nvar msg = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];\nvar signature = key.sign(msg).toHex();\n\n// Verify signature\nconsole.log(key.verify(msg, signature));\n\n// CHECK WITH NO PRIVATE KEY\n\n// Import public key\nvar pub = '0a1af638...';\nvar key = ec.keyFromPublic(pub, 'hex');\n\n// Verify signature\nvar signature = '70bed1...';\nconsole.log(key.verify(msg, signature));\n```\n\n### ECDH\n\n```javascript\nvar EC = require('elliptic').ec;\nvar ec = new EC('curve25519');\n\n// Generate keys\nvar key1 = ec.genKeyPair();\nvar key2 = ec.genKeyPair();\n\nvar shared1 = key1.derive(key2.getPublic());\nvar shared2 = key2.derive(key1.getPublic());\n\nconsole.log('Both shared secrets are BN instances');\nconsole.log(shared1.toString(16));\nconsole.log(shared2.toString(16));\n```\n\nthree and more members:\n```javascript\nvar EC = require('elliptic').ec;\nvar ec = new EC('curve25519');\n\nvar A = ec.genKeyPair();\nvar B = ec.genKeyPair();\nvar C = ec.genKeyPair();\n\nvar AB = A.getPublic().mul(B.getPrivate())\nvar BC = B.getPublic().mul(C.getPrivate())\nvar CA = C.getPublic().mul(A.getPrivate())\n\nvar ABC = AB.mul(C.getPrivate())\nvar BCA = BC.mul(A.getPrivate())\nvar CAB = CA.mul(B.getPrivate())\n\nconsole.log(ABC.getX().toString(16))\nconsole.log(BCA.getX().toString(16))\nconsole.log(CAB.getX().toString(16))\n```\n\nNOTE: `.derive()` returns a [BN][1] instance.\n\n## Supported curves\n\nElliptic.js support following curve types:\n\n* Short Weierstrass\n* Montgomery\n* Edwards\n* Twisted Edwards\n\nFollowing curve 'presets' are embedded into the library:\n\n* `secp256k1`\n* `p192`\n* `p224`\n* `p256`\n* `p384`\n* `p521`\n* `curve25519`\n* `ed25519`\n\nNOTE: That `curve25519` could not be used for ECDSA, use `ed25519` instead.\n\n### Implementation details\n\nECDSA is using deterministic `k` value generation as per [RFC6979][0]. Most of\nthe curve operations are performed on non-affine coordinates (either projective\nor extended), various windowing techniques are used for different cases.\n\nAll operations are performed in reduction context using [bn.js][1], hashing is\nprovided by [hash.js][2]\n\n### Related projects\n\n* [eccrypto][3]: isomorphic implementation of ECDSA, ECDH and ECIES for both\n  browserify and node (uses `elliptic` for browser and [secp256k1-node][4] for\n  node)\n\n#### LICENSE\n\nThis software is licensed under the MIT License.\n\nCopyright Fedor Indutny, 2014.\n\nPermission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to permit\npersons to whom the Software is furnished to do so, subject to the\nfollowing conditions:\n\nThe above copyright notice and this permission notice shall be included\nin all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\nNO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\nDAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE\nUSE OR OTHER DEALINGS IN THE SOFTWARE.\n\n[0]: http://tools.ietf.org/html/rfc6979\n[1]: https://github.com/indutny/bn.js\n[2]: https://github.com/indutny/hash.js\n[3]: https://github.com/bitchan/eccrypto\n[4]: https://github.com/wanderer/secp256k1-node\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/indutny/elliptic.git"
@@ -27763,7 +27773,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 
 module.exports = CipherBase
 
-},{"inherits":192,"safe-buffer":241,"stream":250,"string_decoder":110}],116:[function(require,module,exports){
+},{"inherits":192,"safe-buffer":242,"stream":251,"string_decoder":110}],116:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -28036,33 +28046,40 @@ arguments[4][108][0].apply(exports,arguments)
 module.exports={
   "_args": [
     [
-      "elliptic@6.4.0",
-      "/mnt/d/Projects/ubuntu/siriuscore-lib"
+      {
+        "raw": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+        "spec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+        "type": "remote"
+      },
+      "/mnt/d/Projects/ubuntu/siriusAPI/siriuscore-lib"
     ]
   ],
-  "_development": true,
-  "_from": "elliptic@6.4.0",
+  "_from": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
   "_id": "elliptic@6.4.0",
-  "_inBundle": false,
-  "_integrity": "sha1-ysmvh2LIWDYYcAPI3+GT5eLq5d8=",
+  "_inCache": true,
   "_location": "/create-ecdh/elliptic",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "elliptic@6.4.0",
-    "name": "elliptic",
+    "raw": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+    "scope": null,
     "escapedName": "elliptic",
-    "rawSpec": "6.4.0",
-    "saveSpec": null,
-    "fetchSpec": "6.4.0"
+    "name": "elliptic",
+    "rawSpec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+    "spec": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+    "type": "remote"
   },
   "_requiredBy": [
     "/create-ecdh"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
-  "_spec": "6.4.0",
-  "_where": "/mnt/d/Projects/ubuntu/siriuscore-lib",
+  "_shasum": "cac9af8762c85836187003c8dfe193e5e2eae5df",
+  "_shrinkwrap": null,
+  "_spec": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-6.4.0.tgz",
+  "_where": "/mnt/d/Projects/ubuntu/siriusAPI/siriuscore-lib",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -28109,6 +28126,9 @@ module.exports={
   "license": "MIT",
   "main": "lib/elliptic.js",
   "name": "elliptic",
+  "optionalDependencies": {},
+  "readme": "# Elliptic [![Build Status](https://secure.travis-ci.org/indutny/elliptic.png)](http://travis-ci.org/indutny/elliptic) [![Coverage Status](https://coveralls.io/repos/indutny/elliptic/badge.svg?branch=master&service=github)](https://coveralls.io/github/indutny/elliptic?branch=master) [![Code Climate](https://codeclimate.com/github/indutny/elliptic/badges/gpa.svg)](https://codeclimate.com/github/indutny/elliptic)\n\n[![Saucelabs Test Status](https://saucelabs.com/browser-matrix/gh-indutny-elliptic.svg)](https://saucelabs.com/u/gh-indutny-elliptic)\n\nFast elliptic-curve cryptography in a plain javascript implementation.\n\nNOTE: Please take a look at http://safecurves.cr.yp.to/ before choosing a curve\nfor your cryptography operations.\n\n## Incentive\n\nECC is much slower than regular RSA cryptography, the JS implementations are\neven more slower.\n\n## Benchmarks\n\n```bash\n$ node benchmarks/index.js\nBenchmarking: sign\nelliptic#sign x 262 ops/sec ±0.51% (177 runs sampled)\neccjs#sign x 55.91 ops/sec ±0.90% (144 runs sampled)\n------------------------\nFastest is elliptic#sign\n========================\nBenchmarking: verify\nelliptic#verify x 113 ops/sec ±0.50% (166 runs sampled)\neccjs#verify x 48.56 ops/sec ±0.36% (125 runs sampled)\n------------------------\nFastest is elliptic#verify\n========================\nBenchmarking: gen\nelliptic#gen x 294 ops/sec ±0.43% (176 runs sampled)\neccjs#gen x 62.25 ops/sec ±0.63% (129 runs sampled)\n------------------------\nFastest is elliptic#gen\n========================\nBenchmarking: ecdh\nelliptic#ecdh x 136 ops/sec ±0.85% (156 runs sampled)\n------------------------\nFastest is elliptic#ecdh\n========================\n```\n\n## API\n\n### ECDSA\n\n```javascript\nvar EC = require('elliptic').ec;\n\n// Create and initialize EC context\n// (better do it once and reuse it)\nvar ec = new EC('secp256k1');\n\n// Generate keys\nvar key = ec.genKeyPair();\n\n// Sign message (must be an array, or it'll be treated as a hex sequence)\nvar msg = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];\nvar signature = key.sign(msg);\n\n// Export DER encoded signature in Array\nvar derSign = signature.toDER();\n\n// Verify signature\nconsole.log(key.verify(msg, derSign));\n\n// CHECK WITH NO PRIVATE KEY\n\n// Public key as '04 + x + y'\nvar pub = '04bb1fa3...';\n\n// Signature MUST be either:\n// 1) hex-string of DER-encoded signature; or\n// 2) DER-encoded signature as buffer; or\n// 3) object with two hex-string properties (r and s)\n\nvar signature = 'b102ac...'; // case 1\nvar signature = new Buffer('...'); // case 2\nvar signature = { r: 'b1fc...', s: '9c42...' }; // case 3\n\n// Import public key\nvar key = ec.keyFromPublic(pub, 'hex');\n\n// Verify signature\nconsole.log(key.verify(msg, signature));\n```\n\n### EdDSA\n\n```javascript\nvar EdDSA = require('elliptic').eddsa;\n\n// Create and initialize EdDSA context\n// (better do it once and reuse it)\nvar ec = new EdDSA('ed25519');\n\n// Create key pair from secret\nvar key = ec.keyFromSecret('693e3c...'); // hex string, array or Buffer\n\n// Sign message (must be an array, or it'll be treated as a hex sequence)\nvar msg = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];\nvar signature = key.sign(msg).toHex();\n\n// Verify signature\nconsole.log(key.verify(msg, signature));\n\n// CHECK WITH NO PRIVATE KEY\n\n// Import public key\nvar pub = '0a1af638...';\nvar key = ec.keyFromPublic(pub, 'hex');\n\n// Verify signature\nvar signature = '70bed1...';\nconsole.log(key.verify(msg, signature));\n```\n\n### ECDH\n\n```javascript\nvar EC = require('elliptic').ec;\nvar ec = new EC('curve25519');\n\n// Generate keys\nvar key1 = ec.genKeyPair();\nvar key2 = ec.genKeyPair();\n\nvar shared1 = key1.derive(key2.getPublic());\nvar shared2 = key2.derive(key1.getPublic());\n\nconsole.log('Both shared secrets are BN instances');\nconsole.log(shared1.toString(16));\nconsole.log(shared2.toString(16));\n```\n\nthree and more members:\n```javascript\nvar EC = require('elliptic').ec;\nvar ec = new EC('curve25519');\n\nvar A = ec.genKeyPair();\nvar B = ec.genKeyPair();\nvar C = ec.genKeyPair();\n\nvar AB = A.getPublic().mul(B.getPrivate())\nvar BC = B.getPublic().mul(C.getPrivate())\nvar CA = C.getPublic().mul(A.getPrivate())\n\nvar ABC = AB.mul(C.getPrivate())\nvar BCA = BC.mul(A.getPrivate())\nvar CAB = CA.mul(B.getPrivate())\n\nconsole.log(ABC.getX().toString(16))\nconsole.log(BCA.getX().toString(16))\nconsole.log(CAB.getX().toString(16))\n```\n\nNOTE: `.derive()` returns a [BN][1] instance.\n\n## Supported curves\n\nElliptic.js support following curve types:\n\n* Short Weierstrass\n* Montgomery\n* Edwards\n* Twisted Edwards\n\nFollowing curve 'presets' are embedded into the library:\n\n* `secp256k1`\n* `p192`\n* `p224`\n* `p256`\n* `p384`\n* `p521`\n* `curve25519`\n* `ed25519`\n\nNOTE: That `curve25519` could not be used for ECDSA, use `ed25519` instead.\n\n### Implementation details\n\nECDSA is using deterministic `k` value generation as per [RFC6979][0]. Most of\nthe curve operations are performed on non-affine coordinates (either projective\nor extended), various windowing techniques are used for different cases.\n\nAll operations are performed in reduction context using [bn.js][1], hashing is\nprovided by [hash.js][2]\n\n### Related projects\n\n* [eccrypto][3]: isomorphic implementation of ECDSA, ECDH and ECIES for both\n  browserify and node (uses `elliptic` for browser and [secp256k1-node][4] for\n  node)\n\n#### LICENSE\n\nThis software is licensed under the MIT License.\n\nCopyright Fedor Indutny, 2014.\n\nPermission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to permit\npersons to whom the Software is furnished to do so, subject to the\nfollowing conditions:\n\nThe above copyright notice and this permission notice shall be included\nin all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\nNO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\nDAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE\nUSE OR OTHER DEALINGS IN THE SOFTWARE.\n\n[0]: http://tools.ietf.org/html/rfc6979\n[1]: https://github.com/indutny/bn.js\n[2]: https://github.com/indutny/hash.js\n[3]: https://github.com/bitchan/eccrypto\n[4]: https://github.com/wanderer/secp256k1-node\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/indutny/elliptic.git"
@@ -28180,7 +28200,7 @@ module.exports = function createHash (alg) {
 }
 
 }).call(this,require("buffer").Buffer)
-},{"./md5":137,"buffer":114,"cipher-base":115,"inherits":192,"ripemd160":240,"sha.js":243}],136:[function(require,module,exports){
+},{"./md5":137,"buffer":114,"cipher-base":115,"inherits":192,"ripemd160":241,"sha.js":244}],136:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var intSize = 4
@@ -28431,7 +28451,7 @@ module.exports = function createHmac (alg, key) {
   return new Hmac(alg, key)
 }
 
-},{"./legacy":139,"cipher-base":115,"create-hash/md5":137,"inherits":192,"ripemd160":240,"safe-buffer":241,"sha.js":243}],139:[function(require,module,exports){
+},{"./legacy":139,"cipher-base":115,"create-hash/md5":137,"inherits":192,"ripemd160":241,"safe-buffer":242,"sha.js":244}],139:[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Buffer = require('safe-buffer').Buffer
@@ -28479,7 +28499,7 @@ Hmac.prototype._final = function () {
 }
 module.exports = Hmac
 
-},{"cipher-base":115,"inherits":192,"safe-buffer":241}],140:[function(require,module,exports){
+},{"cipher-base":115,"inherits":192,"safe-buffer":242}],140:[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -33392,34 +33412,42 @@ exports.shr64_lo = shr64_lo;
 module.exports={
   "_args": [
     [
-      "elliptic@3.0.3",
-      "/mnt/d/Projects/ubuntu/siriuscore-lib"
+      {
+        "raw": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+        "scope": null,
+        "escapedName": "elliptic",
+        "name": "elliptic",
+        "rawSpec": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+        "spec": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+        "type": "remote"
+      },
+      "/mnt/d/Projects/ubuntu/siriusAPI/siriuscore-lib"
     ]
   ],
-  "_from": "elliptic@3.0.3",
+  "_from": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
   "_id": "elliptic@3.0.3",
-  "_inBundle": false,
-  "_integrity": "sha1-hlybQgv75VAGuflp+XoNLESWZZU=",
+  "_inCache": true,
   "_location": "/elliptic",
   "_phantomChildren": {
     "inherits": "2.0.1"
   },
   "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "elliptic@3.0.3",
-    "name": "elliptic",
+    "raw": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+    "scope": null,
     "escapedName": "elliptic",
-    "rawSpec": "3.0.3",
-    "saveSpec": null,
-    "fetchSpec": "3.0.3"
+    "name": "elliptic",
+    "rawSpec": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+    "spec": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+    "type": "remote"
   },
   "_requiredBy": [
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
-  "_spec": "3.0.3",
-  "_where": "/mnt/d/Projects/ubuntu/siriuscore-lib",
+  "_shasum": "865c9b420bfbe55006b9f969f97a0d2c44966595",
+  "_shrinkwrap": null,
+  "_spec": "elliptic@https://registry.npmjs.org/elliptic/-/elliptic-3.0.3.tgz",
+  "_where": "/mnt/d/Projects/ubuntu/siriusAPI/siriuscore-lib",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -33451,6 +33479,9 @@ module.exports={
   "license": "MIT",
   "main": "lib/elliptic.js",
   "name": "elliptic",
+  "optionalDependencies": {},
+  "readme": "# Elliptic [![Build Status](https://secure.travis-ci.org/indutny/elliptic.png)](http://travis-ci.org/indutny/elliptic)\n\nFast elliptic-curve cryptography in a plain javascript implementation.\n\nNOTE: Please take a look at http://safecurves.cr.yp.to/ before choosing a curve\nfor your cryptography operations.\n\n## Incentive\n\nECC is much slower than regular RSA cryptography, the JS implementations are\neven more slower.\n\n## Benchmarks\n\n```bash\n$ node benchmarks/index.js\nBenchmarking: sign\nelliptic#sign x 262 ops/sec ±0.51% (177 runs sampled)\neccjs#sign x 55.91 ops/sec ±0.90% (144 runs sampled)\n------------------------\nFastest is elliptic#sign\n========================\nBenchmarking: verify\nelliptic#verify x 113 ops/sec ±0.50% (166 runs sampled)\neccjs#verify x 48.56 ops/sec ±0.36% (125 runs sampled)\n------------------------\nFastest is elliptic#verify\n========================\nBenchmarking: gen\nelliptic#gen x 294 ops/sec ±0.43% (176 runs sampled)\neccjs#gen x 62.25 ops/sec ±0.63% (129 runs sampled)\n------------------------\nFastest is elliptic#gen\n========================\nBenchmarking: ecdh\nelliptic#ecdh x 136 ops/sec ±0.85% (156 runs sampled)\n------------------------\nFastest is elliptic#ecdh\n========================\n```\n\n## API\n\n### ECDSA\n\n```javascript\nvar EC = require('elliptic').ec;\n\n// Create and initialize EC context\n// (better do it once and reuse it)\nvar ec = new EC('secp256k1');\n\n// Generate keys\nvar key = ec.genKeyPair();\n\n// Sign message (must be an array, or it'll be treated as a hex sequence)\nvar msg = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];\nvar signature = key.sign(msg);\n\n// Export DER encoded signature in Array\nvar derSign = signature.toDER();\n\n// Verify signature\nconsole.log(key.verify(msg, derSign));\n```\n\n### ECDH\n\n```javascript\n// Generate keys\nvar key1 = ec.genKeyPair();\nvar key2 = ec.genKeyPair();\n\nvar shared1 = key1.derive(key2.getPublic());\nvar shared2 = key2.derive(key1.getPublic());\n\nconsole.log('Both shared secrets are BN instances');\nconsole.log(shared1.toString(16));\nconsole.log(shared2.toString(16));\n```\n\nNOTE: `.derive()` returns a [BN][1] instance.\n\n## Supported curves\n\nElliptic.js support following curve types:\n\n* Short Weierstrass\n* Montgomery\n* Edwards\n* Twisted Edwards\n\nFollowing curve 'presets' are embedded into the library:\n\n* `secp256k1`\n* `p192`\n* `p224`\n* `p256`\n* `curve25519`\n* `ed25519`\n\nNOTE: That `curve25519` could not be used for ECDSA, use `ed25519` instead.\n\n### Implementation details\n\nECDSA is using deterministic `k` value generation as per [RFC6979][0]. Most of\nthe curve operations are performed on non-affine coordinates (either projective\nor extended), various windowing techniques are used for different cases.\n\nAll operations are performed in reduction context using [bn.js][1], hashing is\nprovided by [hash.js][2]\n\n### Related projects\n\n* [eccrypto][3]: isomorphic implementation of ECDSA, ECDH and ECIES for both\n  browserify and node (uses `elliptic` for browser and [secp256k1-node][4] for\n  node)\n\n#### LICENSE\n\nThis software is licensed under the MIT License.\n\nCopyright Fedor Indutny, 2014.\n\nPermission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to permit\npersons to whom the Software is furnished to do so, subject to the\nfollowing conditions:\n\nThe above copyright notice and this permission notice shall be included\nin all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN\nNO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,\nDAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR\nOTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE\nUSE OR OTHER DEALINGS IN THE SOFTWARE.\n\n[0]: http://tools.ietf.org/html/rfc6979\n[1]: https://github.com/indutny/bn.js\n[2]: https://github.com/indutny/hash.js\n[3]: https://github.com/bitchan/eccrypto\n[4]: https://github.com/wanderer/secp256k1-node\n",
+  "readmeFilename": "README.md",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/indutny/elliptic.git"
@@ -33812,7 +33843,7 @@ function EVP_BytesToKey (password, salt, keyBits, ivLen) {
 
 module.exports = EVP_BytesToKey
 
-},{"md5.js":196,"safe-buffer":241}],175:[function(require,module,exports){
+},{"md5.js":196,"safe-buffer":242}],175:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var Transform = require('stream').Transform
@@ -33899,7 +33930,7 @@ HashBase.prototype._digest = function () {
 module.exports = HashBase
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":114,"inherits":192,"stream":250}],176:[function(require,module,exports){
+},{"buffer":114,"inherits":192,"stream":251}],176:[function(require,module,exports){
 arguments[4][166][0].apply(exports,arguments)
 },{"./hash/common":177,"./hash/hmac":178,"./hash/ripemd":179,"./hash/sha":180,"./hash/utils":187,"dup":166}],177:[function(require,module,exports){
 'use strict';
@@ -47961,7 +47992,7 @@ HashBase.prototype._digest = function () {
 
 module.exports = HashBase
 
-},{"inherits":192,"safe-buffer":241,"stream":250}],198:[function(require,module,exports){
+},{"inherits":192,"safe-buffer":242,"stream":251}],198:[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -48633,7 +48664,7 @@ module.exports = function (password, salt, iterations, keylen, digest, callback)
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./default-encoding":209,"./precondition":210,"./sync":211,"_process":213,"safe-buffer":241}],209:[function(require,module,exports){
+},{"./default-encoding":209,"./precondition":210,"./sync":211,"_process":213,"safe-buffer":242}],209:[function(require,module,exports){
 (function (process){
 var defaultEncoding
 /* istanbul ignore next */
@@ -48770,7 +48801,7 @@ function pbkdf2 (password, salt, iterations, keylen, digest) {
 
 module.exports = pbkdf2
 
-},{"./default-encoding":209,"./precondition":210,"create-hash/md5":137,"ripemd160":240,"safe-buffer":241,"sha.js":243}],212:[function(require,module,exports){
+},{"./default-encoding":209,"./precondition":210,"create-hash/md5":137,"ripemd160":241,"safe-buffer":242,"sha.js":244}],212:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -50025,7 +50056,7 @@ function randomBytes (size, cb) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":213,"safe-buffer":241}],226:[function(require,module,exports){
+},{"_process":213,"safe-buffer":242}],226:[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -50137,7 +50168,7 @@ function randomFillSync (buf, offset, size) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":213,"randombytes":225,"safe-buffer":241}],227:[function(require,module,exports){
+},{"_process":213,"randombytes":225,"safe-buffer":242}],227:[function(require,module,exports){
 module.exports = require('./lib/_stream_duplex.js');
 
 },{"./lib/_stream_duplex.js":228}],228:[function(require,module,exports){
@@ -50265,7 +50296,7 @@ function forEach(xs, f) {
     f(xs[i], i);
   }
 }
-},{"./_stream_readable":230,"./_stream_writable":232,"core-util-is":116,"inherits":192,"process-nextick-args":212}],229:[function(require,module,exports){
+},{"./_stream_readable":230,"./_stream_writable":232,"core-util-is":116,"inherits":236,"process-nextick-args":212}],229:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -50313,7 +50344,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":231,"core-util-is":116,"inherits":192}],230:[function(require,module,exports){
+},{"./_stream_transform":231,"core-util-is":116,"inherits":236}],230:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -51331,7 +51362,7 @@ function indexOf(xs, x) {
   return -1;
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_stream_duplex":228,"./internal/streams/BufferList":233,"./internal/streams/destroy":234,"./internal/streams/stream":235,"_process":213,"core-util-is":116,"events":173,"inherits":192,"isarray":194,"process-nextick-args":212,"safe-buffer":241,"string_decoder/":251,"util":64}],231:[function(require,module,exports){
+},{"./_stream_duplex":228,"./internal/streams/BufferList":233,"./internal/streams/destroy":234,"./internal/streams/stream":235,"_process":213,"core-util-is":116,"events":173,"inherits":236,"isarray":194,"process-nextick-args":212,"safe-buffer":242,"string_decoder/":252,"util":64}],231:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -51546,7 +51577,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":228,"core-util-is":116,"inherits":192}],232:[function(require,module,exports){
+},{"./_stream_duplex":228,"core-util-is":116,"inherits":236}],232:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -52226,7 +52257,7 @@ Writable.prototype._destroy = function (err, cb) {
   cb(err);
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./_stream_duplex":228,"./internal/streams/destroy":234,"./internal/streams/stream":235,"_process":213,"core-util-is":116,"inherits":192,"process-nextick-args":212,"safe-buffer":241,"util-deprecate":254}],233:[function(require,module,exports){
+},{"./_stream_duplex":228,"./internal/streams/destroy":234,"./internal/streams/stream":235,"_process":213,"core-util-is":116,"inherits":236,"process-nextick-args":212,"safe-buffer":242,"util-deprecate":255}],233:[function(require,module,exports){
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52306,7 +52337,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":241,"util":64}],234:[function(require,module,exports){
+},{"safe-buffer":242,"util":64}],234:[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -52385,9 +52416,11 @@ module.exports = {
 module.exports = require('events').EventEmitter;
 
 },{"events":173}],236:[function(require,module,exports){
+arguments[4][188][0].apply(exports,arguments)
+},{"dup":188}],237:[function(require,module,exports){
 module.exports = require('./readable').PassThrough
 
-},{"./readable":237}],237:[function(require,module,exports){
+},{"./readable":238}],238:[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -52396,13 +52429,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":228,"./lib/_stream_passthrough.js":229,"./lib/_stream_readable.js":230,"./lib/_stream_transform.js":231,"./lib/_stream_writable.js":232}],238:[function(require,module,exports){
+},{"./lib/_stream_duplex.js":228,"./lib/_stream_passthrough.js":229,"./lib/_stream_readable.js":230,"./lib/_stream_transform.js":231,"./lib/_stream_writable.js":232}],239:[function(require,module,exports){
 module.exports = require('./readable').Transform
 
-},{"./readable":237}],239:[function(require,module,exports){
+},{"./readable":238}],240:[function(require,module,exports){
 module.exports = require('./lib/_stream_writable.js');
 
-},{"./lib/_stream_writable.js":232}],240:[function(require,module,exports){
+},{"./lib/_stream_writable.js":232}],241:[function(require,module,exports){
 (function (Buffer){
 'use strict'
 var inherits = require('inherits')
@@ -52697,7 +52730,7 @@ function fn5 (a, b, c, d, e, m, k, s) {
 module.exports = RIPEMD160
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":114,"hash-base":175,"inherits":192}],241:[function(require,module,exports){
+},{"buffer":114,"hash-base":175,"inherits":192}],242:[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -52761,7 +52794,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":114}],242:[function(require,module,exports){
+},{"buffer":114}],243:[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 // prototype class for hash functions
@@ -52844,7 +52877,7 @@ Hash.prototype._update = function () {
 
 module.exports = Hash
 
-},{"safe-buffer":241}],243:[function(require,module,exports){
+},{"safe-buffer":242}],244:[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -52861,7 +52894,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":244,"./sha1":245,"./sha224":246,"./sha256":247,"./sha384":248,"./sha512":249}],244:[function(require,module,exports){
+},{"./sha":245,"./sha1":246,"./sha224":247,"./sha256":248,"./sha384":249,"./sha512":250}],245:[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
  * in FIPS PUB 180-1
@@ -52957,7 +52990,7 @@ Sha.prototype._hash = function () {
 
 module.exports = Sha
 
-},{"./hash":242,"inherits":192,"safe-buffer":241}],245:[function(require,module,exports){
+},{"./hash":243,"inherits":192,"safe-buffer":242}],246:[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
  * in FIPS PUB 180-1
@@ -53058,7 +53091,7 @@ Sha1.prototype._hash = function () {
 
 module.exports = Sha1
 
-},{"./hash":242,"inherits":192,"safe-buffer":241}],246:[function(require,module,exports){
+},{"./hash":243,"inherits":192,"safe-buffer":242}],247:[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -53113,7 +53146,7 @@ Sha224.prototype._hash = function () {
 
 module.exports = Sha224
 
-},{"./hash":242,"./sha256":247,"inherits":192,"safe-buffer":241}],247:[function(require,module,exports){
+},{"./hash":243,"./sha256":248,"inherits":192,"safe-buffer":242}],248:[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -53250,7 +53283,7 @@ Sha256.prototype._hash = function () {
 
 module.exports = Sha256
 
-},{"./hash":242,"inherits":192,"safe-buffer":241}],248:[function(require,module,exports){
+},{"./hash":243,"inherits":192,"safe-buffer":242}],249:[function(require,module,exports){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
 var Hash = require('./hash')
@@ -53309,7 +53342,7 @@ Sha384.prototype._hash = function () {
 
 module.exports = Sha384
 
-},{"./hash":242,"./sha512":249,"inherits":192,"safe-buffer":241}],249:[function(require,module,exports){
+},{"./hash":243,"./sha512":250,"inherits":192,"safe-buffer":242}],250:[function(require,module,exports){
 var inherits = require('inherits')
 var Hash = require('./hash')
 var Buffer = require('safe-buffer').Buffer
@@ -53571,7 +53604,7 @@ Sha512.prototype._hash = function () {
 
 module.exports = Sha512
 
-},{"./hash":242,"inherits":192,"safe-buffer":241}],250:[function(require,module,exports){
+},{"./hash":243,"inherits":192,"safe-buffer":242}],251:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -53700,7 +53733,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":173,"inherits":192,"readable-stream/duplex.js":227,"readable-stream/passthrough.js":236,"readable-stream/readable.js":237,"readable-stream/transform.js":238,"readable-stream/writable.js":239}],251:[function(require,module,exports){
+},{"events":173,"inherits":192,"readable-stream/duplex.js":227,"readable-stream/passthrough.js":237,"readable-stream/readable.js":238,"readable-stream/transform.js":239,"readable-stream/writable.js":240}],252:[function(require,module,exports){
 'use strict';
 
 var Buffer = require('safe-buffer').Buffer;
@@ -53973,7 +54006,7 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":241}],252:[function(require,module,exports){
+},{"safe-buffer":242}],253:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -54707,7 +54740,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":253,"punycode":221,"querystring":224}],253:[function(require,module,exports){
+},{"./util":254,"punycode":221,"querystring":224}],254:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -54725,7 +54758,7 @@ module.exports = {
   }
 };
 
-},{}],254:[function(require,module,exports){
+},{}],255:[function(require,module,exports){
 (function (global){
 
 /**
@@ -54796,14 +54829,14 @@ function config (name) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],255:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],256:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -55393,7 +55426,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":255,"_process":213,"inherits":192}],257:[function(require,module,exports){
+},{"./support/isBuffer":256,"_process":213,"inherits":192}],258:[function(require,module,exports){
 var indexOf = require('indexof');
 
 var Object_keys = function (obj) {
@@ -55533,7 +55566,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{"indexof":191}],258:[function(require,module,exports){
+},{"indexof":191}],259:[function(require,module,exports){
 module.exports={
   "name": "siriuscore-lib",
   "version": "0.0.1",
@@ -55662,4 +55695,4 @@ bitcore.deps._ = require('lodash');
 bitcore.Transaction.sighash = require('./lib/transaction/sighash');
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
-},{"./lib/address":1,"./lib/block":4,"./lib/block/blockheader":3,"./lib/block/merkleblock":5,"./lib/crypto/bn":6,"./lib/crypto/ecdsa":7,"./lib/crypto/hash":8,"./lib/crypto/point":9,"./lib/crypto/random":10,"./lib/crypto/signature":11,"./lib/encoding/base58":12,"./lib/encoding/base58check":13,"./lib/encoding/bufferreader":14,"./lib/encoding/bufferwriter":15,"./lib/encoding/varint":16,"./lib/errors":17,"./lib/hdprivatekey.js":19,"./lib/hdpublickey.js":20,"./lib/networks":21,"./lib/opcode":22,"./lib/privatekey":23,"./lib/publickey":24,"./lib/script":25,"./lib/transaction":28,"./lib/transaction/sighash":36,"./lib/unit":40,"./lib/uri":41,"./lib/util/buffer":42,"./lib/util/js":43,"./lib/util/preconditions":44,"./package.json":258,"bn.js":62,"bs58":111,"buffer":114,"elliptic":152,"lodash":195}]},{},[]);
+},{"./lib/address":1,"./lib/block":4,"./lib/block/blockheader":3,"./lib/block/merkleblock":5,"./lib/crypto/bn":6,"./lib/crypto/ecdsa":7,"./lib/crypto/hash":8,"./lib/crypto/point":9,"./lib/crypto/random":10,"./lib/crypto/signature":11,"./lib/encoding/base58":12,"./lib/encoding/base58check":13,"./lib/encoding/bufferreader":14,"./lib/encoding/bufferwriter":15,"./lib/encoding/varint":16,"./lib/errors":17,"./lib/hdprivatekey.js":19,"./lib/hdpublickey.js":20,"./lib/networks":21,"./lib/opcode":22,"./lib/privatekey":23,"./lib/publickey":24,"./lib/script":25,"./lib/transaction":28,"./lib/transaction/sighash":36,"./lib/unit":40,"./lib/uri":41,"./lib/util/buffer":42,"./lib/util/js":43,"./lib/util/preconditions":44,"./package.json":259,"bn.js":62,"bs58":111,"buffer":114,"elliptic":152,"lodash":195}]},{},[]);
