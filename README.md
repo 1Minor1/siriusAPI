@@ -16,13 +16,24 @@ sudo npm install touch -g
 sudo npm install gulp-cli -g
 ```  
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+Then open a Mongodb client window and create a user in the admin database:
+```
+use admin
+db.createUser(
+   {
+     user: "sirius",
+     pwd: "mynewpassword",
+     roles: [ "readWrite", "dbAdmin" ]
+   }
+)
+```
 
 ## Project Dependencies
 **sirius-explorer** requires the **sirius-insight-api** that runs on **siriuscore-node** that has dependencies on **siriuscore-lib** and **siriusd-rpc**
 
 Everything also depends on the siriuscore wallet here: https://github.com/siriuscore/sirius
 
-After a successful build of the sirius wallet, you need to create a link to the sirius daemon in the bin folder of the **siriuscore-node** project. Eg:
+After a successful build of the siriuscore wallet, you need to create a link to the sirius daemon in the bin folder of the **siriuscore-node** project. Eg:
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/bin
 ln -sf ~/sirius/src/siriusd
@@ -61,13 +72,6 @@ cd ~/projects/siriusAPI/sirius-insight-api/node_modules/
 ln -s ~/projects/siriusAPI/siriuscore-lib
 ```
 
-Run the siriuscore-node test and build the project.
-```bash
-cd ~/projects/siriusAPI/siriuscore-node
-npm run regtest
-npm run test
-```
-
 ## Running a Development Node (siriuscore-node)
 
 To test running the node, you can setup a configuration that will specify development versions of all of the services:
@@ -93,6 +97,18 @@ Edit `siriuscore-node.json` with something similar to:
     "sirius-explorer"
   ],
   "servicesConfig": {
+    "sirius-insight-api": {
+      "db": {
+        "user": "sirius",
+        "password": "mynewpassword",
+        "host": "localhost",
+        "port": 27017,
+        "database": "admin"
+      },
+      "erc20Config": {
+        "updateFromBlockHeight": 0
+      }
+    },
     "siriusd": {
       "spawn": {
         "datadir": "/home/<youruser>/.sirius",
@@ -117,6 +133,7 @@ Make sure that the `<datadir>/sirius.conf` has the necessary settings, for examp
 ```
 server=1
 whitelist=127.0.0.1
+logevents=1
 txindex=1
 addressindex=1
 timestampindex=1
@@ -133,7 +150,6 @@ rpcport=8332
 reindex=1
 gen=0
 addrindex=1
-logevents=1
 ```
 
 From within the `devnode` directory with the configuration file, start the node:
