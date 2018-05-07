@@ -105,7 +105,13 @@ Edit `siriuscore-node.json` with something similar to:
     "sirius-explorer"
   ],
   "servicesConfig": {
+    "sirius-explorer": {
+      "apiPrefix": "sirius-insight-api",
+      "routePrefix": "sirius-explorer",
+      "nodemapLink": "localhost/nodemap"
+   },
     "sirius-insight-api": {
+      "routePrefix": "sirius-insight-api",
       "db": {
         "user": "sirius",
         "password": "mynewpassword",
