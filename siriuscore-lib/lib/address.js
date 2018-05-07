@@ -74,15 +74,15 @@ function Address(data, network, type) {
   network = network || Networks.get(network) || Networks.defaultNetwork;
   type = type || Address.PayToPublicKeyHash;
 
-  // if (!network || !type) {
-  //   throw new TypeError("Invalid arguments. data.network.type: " + data + "." + network + "." + type);
-  // }
-
   var info = this._classifyArguments(data, network, type);
 
   // set defaults if not set
   info.network = info.network || Networks.get(network) || Networks.defaultNetwork;
   info.type = info.type || type || Address.PayToPublicKeyHash;
+
+  if (!info.network || !info.type) {
+    throw new TypeError("Network or Type could not be determined. data.network.type: " + data + "." + info.network + "." + info.type);
+  }
 
   JSUtil.defineImmutable(this, {
     hashBuffer: info.hashBuffer,
