@@ -70,6 +70,14 @@ function Address(data, network, type) {
     throw new TypeError('Third argument must be "pubkeyhash" or "scripthash".');
   }
 
+  // set defaults if not set
+  network = network || Networks.get(network) || Networks.defaultNetwork;
+  type = type || Address.PayToPublicKeyHash;
+
+  // if (!network || !type) {
+  //   throw new TypeError("Invalid arguments. data.network.type: " + data + "." + network + "." + type);
+  // }
+
   var info = this._classifyArguments(data, network, type);
 
   // set defaults if not set
@@ -92,7 +100,7 @@ function Address(data, network, type) {
  * @param {string=} type - The type of address: 'script' or 'pubkey'
  * @returns {Object} An "info" object with "type", "network", and "hashBuffer"
  */
-Address.prototype._classifyArguments = function(data, network, type) {
+Address.prototype._classifyArguments = function (data, network, type) {
   /* jshint maxcomplexity: 10 */
   // transform and validate input data
   if ((data instanceof Buffer || data instanceof Uint8Array) && data.length === 20) {
@@ -103,7 +111,7 @@ Address.prototype._classifyArguments = function(data, network, type) {
     return Address._transformPublicKey(data);
   } else if (data instanceof Script) {
     return Address._transformScript(data, network);
-  } else if (typeof(data) === 'string') {
+  } else if (typeof (data) === 'string') {
     return Address._transformString(data, network, type);
   } else if (_.isObject(data)) {
     return Address._transformObject(data);
@@ -122,7 +130,7 @@ Address.PayToScriptHash = 'scripthash';
  * @returns {Object} An object with keys: hashBuffer
  * @private
  */
-Address._transformHash = function(hash) {
+Address._transformHash = function (hash) {
   var info = {};
   if (!(hash instanceof Buffer) && !(hash instanceof Uint8Array)) {
     throw new TypeError('Address supplied is not a buffer.');
@@ -142,7 +150,7 @@ Address._transformHash = function(hash) {
  * @param {Network=} data.network - the name of the network associated
  * @return {Address}
  */
-Address._transformObject = function(data) {
+Address._transformObject = function (data) {
   $.checkArgument(data.hash || data.hashBuffer, 'Must provide a `hash` or `hashBuffer` property');
   $.checkArgument(data.type, 'Must provide a `type` property');
   return {
@@ -159,7 +167,7 @@ Address._transformObject = function(data) {
  * @returns {Object} An object with keys: network and type
  * @private
  */
-Address._classifyFromVersion = function(buffer) {
+Address._classifyFromVersion = function (buffer) {
   var version = {};
   var pubkeyhashNetwork = Networks.get(buffer[0], 'pubkeyhash');
   var scripthashNetwork = Networks.get(buffer[0], 'scripthash');
@@ -171,6 +179,9 @@ Address._classifyFromVersion = function(buffer) {
     version.network = scripthashNetwork;
     version.type = Address.PayToScriptHash;
   }
+  // set defaults if not set
+  version.network = version.network || Networks.defaultNetwork;
+  version.type = version.type || Address.PayToPublicKeyHash;
 
   return version;
 };
@@ -184,7 +195,7 @@ Address._classifyFromVersion = function(buffer) {
  * @returns {Object} An object with keys: hashBuffer, network and type
  * @private
  */
-Address._transformBuffer = function(buffer, network, type) {
+Address._transformBuffer = function (buffer, network, type) {
   /* jshint maxcomplexity: 9 */
   var info = {};
   if (!(buffer instanceof Buffer) && !(buffer instanceof Uint8Array)) {
@@ -199,7 +210,8 @@ Address._transformBuffer = function(buffer, network, type) {
   var bufferVersion = Address._classifyFromVersion(buffer);
 
   if (!bufferVersion.network || (network && network !== bufferVersion.network)) {
-    throw new TypeError('Address has mismatched network type.');
+    throw new TypeError('Address has mismatched network type. fromNetwork: ' + network + ", fromAddress: "
+      + bufferVersion.network + ", buffer.network.type: " + buffer + "." + network + "." + type);
   }
 
   if (!bufferVersion.type || (type && type !== bufferVersion.type)) {
@@ -219,7 +231,7 @@ Address._transformBuffer = function(buffer, network, type) {
  * @returns {Object} An object with keys: hashBuffer, type
  * @private
  */
-Address._transformPublicKey = function(pubkey) {
+Address._transformPublicKey = function (pubkey) {
   var info = {};
   if (!(pubkey instanceof PublicKey)) {
     throw new TypeError('Address must be an instance of PublicKey.');
@@ -236,7 +248,7 @@ Address._transformPublicKey = function(pubkey) {
  * @returns {Object} An object with keys: hashBuffer, type
  * @private
  */
-Address._transformScript = function(script, network) {
+Address._transformScript = function (script, network) {
   $.checkArgument(script instanceof Script, 'script must be a Script instance');
   var info = script.getAddressInfo(network);
   if (!info) {
@@ -257,7 +269,7 @@ Address._transformScript = function(script, network) {
  * @param {String|Network} network - either a Network instance, 'livenet', or 'testnet'
  * @return {Address}
  */
-Address.createMultisig = function(publicKeys, threshold, network) {
+Address.createMultisig = function (publicKeys, threshold, network) {
   network = network || publicKeys[0].network || Networks.defaultNetwork;
   return Address.payingTo(Script.buildMultisigOut(publicKeys, threshold), network);
 };
@@ -271,8 +283,8 @@ Address.createMultisig = function(publicKeys, threshold, network) {
  * @returns {Object} An object with keys: hashBuffer, network and type
  * @private
  */
-Address._transformString = function(data, network, type) {
-  if (typeof(data) !== 'string') {
+Address._transformString = function (data, network, type) {
+  if (typeof (data) !== 'string') {
     throw new TypeError('data parameter supplied is not a string.');
   }
   data = data.trim();
@@ -288,7 +300,7 @@ Address._transformString = function(data, network, type) {
  * @param {String|Network} network - either a Network instance, 'livenet', or 'testnet'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.fromPublicKey = function(data, network) {
+Address.fromPublicKey = function (data, network) {
   var info = Address._transformPublicKey(data);
   network = network || Networks.defaultNetwork;
   return new Address(info.hashBuffer, network, info.type);
@@ -301,7 +313,7 @@ Address.fromPublicKey = function(data, network) {
  * @param {String|Network} network - either a Network instance, 'livenet', or 'testnet'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.fromPublicKeyHash = function(hash, network) {
+Address.fromPublicKeyHash = function (hash, network) {
   var info = Address._transformHash(hash);
   return new Address(info.hashBuffer, network, Address.PayToPublicKeyHash);
 };
@@ -313,7 +325,7 @@ Address.fromPublicKeyHash = function(hash, network) {
  * @param {String|Network} network - either a Network instance, 'livenet', or 'testnet'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.fromScriptHash = function(hash, network) {
+Address.fromScriptHash = function (hash, network) {
   $.checkArgument(hash, 'hash parameter is required');
   var info = Address._transformHash(hash);
   return new Address(info.hashBuffer, network, Address.PayToScriptHash);
@@ -329,7 +341,7 @@ Address.fromScriptHash = function(hash, network) {
  * @param {String|Network} network - either a Network instance, 'livenet', or 'testnet'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.payingTo = function(script, network) {
+Address.payingTo = function (script, network) {
   $.checkArgument(script, 'script is required');
   $.checkArgument(script instanceof Script, 'script must be instance of Script');
 
@@ -348,7 +360,7 @@ Address.payingTo = function(script, network) {
  * @param {String|Network} network - either a Network instance, 'livenet', or 'testnet'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.fromScript = function(script, network) {
+Address.fromScript = function (script, network) {
   $.checkArgument(script instanceof Script, 'script must be a Script instance');
   var info = Address._transformScript(script, network);
   return new Address(info.hashBuffer, network, info.type);
@@ -362,7 +374,7 @@ Address.fromScript = function(script, network) {
  * @param {string=} type - The type of address: 'script' or 'pubkey'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.fromBuffer = function(buffer, network, type) {
+Address.fromBuffer = function (buffer, network, type) {
   var info = Address._transformBuffer(buffer, network, type);
   return new Address(info.hashBuffer, info.network, info.type);
 };
@@ -375,7 +387,7 @@ Address.fromBuffer = function(buffer, network, type) {
  * @param {string=} type - The type of address: 'script' or 'pubkey'
  * @returns {Address} A new valid and frozen instance of an Address
  */
-Address.fromString = function(str, network, type) {
+Address.fromString = function (str, network, type) {
   var info = Address._transformString(str, network, type);
   return new Address(info.hashBuffer, info.network, info.type);
 };
@@ -409,7 +421,7 @@ Address.fromObject = function fromObject(obj) {
  * @param {string} type - The type of address: 'script' or 'pubkey'
  * @returns {null|Error} The corresponding error message
  */
-Address.getValidationError = function(data, network, type) {
+Address.getValidationError = function (data, network, type) {
   var error;
   try {
     /* jshint nonew: false */
@@ -433,7 +445,7 @@ Address.getValidationError = function(data, network, type) {
  * @param {string} type - The type of address: 'script' or 'pubkey'
  * @returns {boolean} The corresponding error message
  */
-Address.isValid = function(data, network, type) {
+Address.isValid = function (data, network, type) {
   return !Address.getValidationError(data, network, type);
 };
 
@@ -441,7 +453,7 @@ Address.isValid = function(data, network, type) {
  * Returns true if an address is of pay to public key hash type
  * @return boolean
  */
-Address.prototype.isPayToPublicKeyHash = function() {
+Address.prototype.isPayToPublicKeyHash = function () {
   return this.type === Address.PayToPublicKeyHash;
 };
 
@@ -449,7 +461,7 @@ Address.prototype.isPayToPublicKeyHash = function() {
  * Returns true if an address is of pay to script hash type
  * @return boolean
  */
-Address.prototype.isPayToScriptHash = function() {
+Address.prototype.isPayToScriptHash = function () {
   return this.type === Address.PayToScriptHash;
 };
 
@@ -458,7 +470,7 @@ Address.prototype.isPayToScriptHash = function() {
  *
  * @returns {Buffer} Bitcoin address buffer
  */
-Address.prototype.toBuffer = function() {
+Address.prototype.toBuffer = function () {
   var version = new Buffer([this.network[this.type]]);
   var buf = Buffer.concat([version, this.hashBuffer]);
   return buf;
@@ -480,7 +492,7 @@ Address.prototype.toObject = Address.prototype.toJSON = function toObject() {
  *
  * @returns {string} Bitcoin address
  */
-Address.prototype.toString = function() {
+Address.prototype.toString = function () {
   return Base58Check.encode(this.toBuffer());
 };
 
@@ -489,7 +501,7 @@ Address.prototype.toString = function() {
  *
  * @returns {string} Bitcoin address
  */
-Address.prototype.inspect = function() {
+Address.prototype.inspect = function () {
   return '<Address: ' + this.toString() + ', type: ' + this.type + ', network: ' + this.network + '>';
 };
 
