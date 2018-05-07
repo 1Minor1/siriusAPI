@@ -1,19 +1,23 @@
 # SiriusAPI
 Projects ported from Bitcore to support the Insight API.
-These scripts assume you cloned this repository into a folder called `projects` in your home directory.
 
+
+These projects require the Sirius core wallet. Clone and build the siriuscore wallet from here before you start: https://github.com/siriuscore/sirius
+
+
+Follow these scripts to install nvm, node and some required dependencies.
 ## Getting Started
-
-Install nvm https://github.com/creationix/nvm  
-
 ```bash
-nvm i v6
-nvm use v6
+wget -qO- https://raw.githubusercontent.com/xtuple/nvm/master/install.sh | sudo bash
+sudo nvm install 6
+sudo nvm use 6
 sudo apt-get install -y build-essential
 sudo apt-get install libzmq3-dev
 sudo npm install mocha -g
 sudo npm install touch -g
 sudo npm install gulp-cli -g
+sudo npm install jshint -g
+sudo npm install phantomjs-prebuilt -g
 ```  
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 Then open a Mongodb client window and create a user in the admin database:
@@ -27,15 +31,19 @@ db.createUser(
    }
 )
 ```
-
+Clone this repository into a folder called `projects` in your home directory.
+```bash
+mkdir projects
+cd projects
+git clone https://github.com/SportsPodium/siriusAPI --recursive
+```
 ## Project Dependencies
 **sirius-explorer** requires the **sirius-insight-api** that runs on **siriuscore-node** that has dependencies on **siriuscore-lib** and **siriusd-rpc**
-
-Everything also depends on the siriuscore wallet here: https://github.com/siriuscore/sirius
 
 After a successful build of the siriuscore wallet, you need to create a link to the sirius daemon in the bin folder of the **siriuscore-node** project. Eg:
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/bin
+chmod +x siriuscore-node
 ln -sf ~/sirius/src/siriusd
 ```
 
@@ -141,8 +149,8 @@ spentindex=1
 par=2
 onlynet=ipv4
 maxconnections=24
-zmqpubrawtx=tcp://127.0.0.1:8332
-zmqpubhashblock=tcp://127.0.0.1:8332
+zmqpubrawtx=tcp://127.0.0.1:28332
+zmqpubhashblock=tcp://127.0.0.1:28332
 rpcallowip=127.0.0.1
 rpcuser=user
 rpcpassword=password
@@ -151,9 +159,16 @@ reindex=1
 gen=0
 addrindex=1
 ```
-
+Make sure the Sirius wallet functions properly.
+```bash
+cd ~/sirius/src
+./siriusd &
+./sirius-cli getinfo
+sudo pkill siriusd
+```
 From within the `devnode` directory with the configuration file, start the node:
 ```bash
+cd ~/projects/devnode/
 ../siriusAPI/siriuscore-node/bin/siriuscore-node start
 ```
 
