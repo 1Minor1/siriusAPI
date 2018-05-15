@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('insight.siriuscorelib').factory('siriusCoreLib',
+angular.module('insight.siriuscorelib').factory('SiriusCoreLib',
     function() {
-        var siriusCoreLib = require('siriuscore-lib');
-        return siriusCoreLib;
+        var SiriusCoreLib = require('siriuscore-lib');
+        return SiriusCoreLib;
     });
 

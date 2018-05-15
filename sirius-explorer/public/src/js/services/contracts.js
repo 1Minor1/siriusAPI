@@ -6,14 +6,14 @@ angular.module('insight.contracts')
 			return $resource(window.apiPrefix + '/contracts/:contractAddressStr/info');
 	})
 	.factory('Contracts',
-	function(siriusCoreLib, Opcodes, Networks, Constants) {
+	function(SiriusCoreLib, Opcodes, Networks, Constants) {
 
 		var CONTRACT_CALL = 194;
 		var CONTRACT_CREATE = 193;
 
 		return {
-			isValidsiriusAddress: function (address) {
-                return siriusCoreLib.Address.isValid(address, Constants.NETWORK)
+			isValidSiriusAddress: function (address) {
+                return SiriusCoreLib.Address.isValid(address, Constants.NETWORK)
 			},
 			getBitAddressFromContractAddress: function (contractAddress) {
 
@@ -21,10 +21,10 @@ angular.module('insight.contracts')
 
                     var network = Networks.getCurrentNetwork(),
                         networkId = network.pubkeyhash.toString(16),
-                        checksum = siriusCoreLib.crypto.Hash.sha256sha256(new siriusCoreLib.deps.Buffer(networkId + contractAddress, 'hex')),
+                        checksum = SiriusCoreLib.crypto.Hash.sha256sha256(new SiriusCoreLib.deps.Buffer(networkId + contractAddress, 'hex')),
                         hexBitAddress = networkId + contractAddress + checksum.toString('hex').slice(0, 8);
 
-                    return siriusCoreLib.encoding.Base58.encode(new siriusCoreLib.deps.Buffer(hexBitAddress, 'hex'));
+                    return SiriusCoreLib.encoding.Base58.encode(new SiriusCoreLib.deps.Buffer(hexBitAddress, 'hex'));
 
 				} catch (e) {
 					return null;
@@ -37,7 +37,7 @@ angular.module('insight.contracts')
 
                     var network = Networks.getCurrentNetwork(),
                         networkId = network.pubkeyhash.toString(16),
-                        hexBitAddress = siriusCoreLib.encoding.Base58.decode(bitAddress).toString('hex');
+                        hexBitAddress = SiriusCoreLib.encoding.Base58.decode(bitAddress).toString('hex');
 
                     if (hexBitAddress.slice(0, 2) !== networkId) {
                         return null
@@ -53,7 +53,7 @@ angular.module('insight.contracts')
 			},
 			getContractOpcodesString: function (hex) {
 
-				var contractCode = new siriusCoreLib.deps.Buffer(hex, 'hex'),
+				var contractCode = new SiriusCoreLib.deps.Buffer(hex, 'hex'),
 					ops = [];
 
 				for (var index = 0; index < contractCode.length; index++) {
@@ -93,7 +93,7 @@ angular.module('insight.contracts')
 
 				try {
 
-					var script = siriusCoreLib.Script(hex);
+					var script = SiriusCoreLib.Script(hex);
 
 					if (script.chunks && script.chunks.length) {
 
@@ -130,7 +130,7 @@ angular.module('insight.contracts')
 
 				try {
 
-					var script = siriusCoreLib.Script(hex);
+					var script = SiriusCoreLib.Script(hex);
 
 					if (script.chunks && script.chunks.length) {
 
@@ -158,13 +158,13 @@ angular.module('insight.contracts')
 			},
 			getContractAddress: function (txId, num) {
 				var reverseTxId = txId.match(/.{2}/g).reverse().join(""),
-					buf = new siriusCoreLib.deps.Buffer(4);
+					buf = new SiriusCoreLib.deps.Buffer(4);
 
 				buf.writeUInt32LE(num, 0);
 
 				var nHex = buf.toString('hex'),
 					addr = reverseTxId + nHex,
-					bufferAddress = siriusCoreLib.crypto.Hash.sha256ripemd160(new siriusCoreLib.deps.Buffer(addr, 'hex'));
+					bufferAddress = SiriusCoreLib.crypto.Hash.sha256ripemd160(new SiriusCoreLib.deps.Buffer(addr, 'hex'));
 
 				return bufferAddress.toString('hex');
 			}

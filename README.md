@@ -9,8 +9,8 @@ Follow these scripts to install nvm, node and some required dependencies.
 ## Getting Started
 ```bash
 wget -qO- https://raw.githubusercontent.com/xtuple/nvm/master/install.sh | sudo bash
-sudo nvm install 6
-sudo nvm use 6
+sudo nvm install 8
+sudo nvm use 8
 sudo apt-get install -y build-essential
 sudo apt-get install libzmq3-dev
 sudo npm install mocha -g
@@ -18,6 +18,8 @@ sudo npm install touch -g
 sudo npm install gulp-cli -g
 sudo npm install jshint -g
 sudo npm install phantomjs-prebuilt -g
+sudo npm install grunt -g
+sudo npm install bower -g
 ```  
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 Then open a Mongodb client window and create a user in the admin database:
@@ -161,11 +163,10 @@ rpcallowip=127.0.0.1
 rpcuser=user
 rpcpassword=password
 rpcport=8332
-reindex=1
-gen=0
 addrindex=1
+reindex=1
 ```
-Make sure the Sirius wallet functions properly.
+Make sure the Sirius wallet functions properly. You only need to run with the `reindex=1` parameter once. Comment it out `#reindex=1` after a successful test:
 ```bash
 cd ~/sirius/src
 ./siriusd &
@@ -184,4 +185,4 @@ http://localhost:3001/sirius-insight-api/status
 Open the Block Explorer:
 http://localhost:3001/sirius-explorer/
 
-
+When you make changes to the sirius-explorer project, you will have to do a `bower install` once and then run `grunt compile` to affect changes to source files.

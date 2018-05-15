@@ -1,110 +1,114 @@
 # Explorer
 
-A sirius blockchain explorer web application service for [siriuscore Node](https://github.com/siriusproject/siriuscore-node) using the [sirius API](https://github.com/siriusproject/insight-api).
-
-
-## Install via SSH
-
-```
-nvm use v6
-```
-
-```
-npm install git+ssh://git@github.com:siriusproject/siriuscore-node.git#master
-$(npm bin)/siriuscore-node create mynode
-cd mynode 
-
-$(npm bin)/siriuscore-node install git+ssh://git@github.com:siriusproject/insight-api.git#master
-$(npm bin)/siriuscore-node install git+ssh://git@github.com:siriusproject/sirius-explorer.git#master
-
-```
-
-Edit siriuscore-node.json:
-```
-{
-  "network": "livenet",
-  "port": 3001,
-  "services": [
-    "siriusd",
-    "sirius-insight-api",
-    "sirius-explorer",
-    "web"
-  ],
-  "servicesConfig": {
-    "sirius-explorer": {
-      "apiPrefix": "sirius-insight-api",
-      "routePrefix": "sirius-explorer",
-      "nodemapLink": "https://sirius.org/en/nodemap"
-    },
-    "sirius-insight-api": {
-      "routePrefix": "sirius-insight-api",
-      "rateLimiterOptions": {
-        "whitelist": ["123.456.12.34", "::ffff:123.456.12.34"],
-        "whitelistLimit": 9999999,
-        "limit": 200,
-        "interval": 60000,
-        "banInterval": 3600000
-      },
-      "db": {
-        "host": "127.0.0.1",
-        "port": "27017",
-        "database": "sirius-api",
-        "user": "",
-        "password": ""
-      },
-      "erc20": {
-        "updateFromBlockHeight": 0
-      }
-    },
-    "siriusd": {
-      "spawn": {
-        "datadir": "/home/user/.sirius",
-        "exec": "/home/user/sirius-bitcore/src/siriusd"
-      }
-    }
-  }
-}
-```
-
-Edit sirius.conf:
-```
-server=1
-whitelist=127.0.0.1
-txindex=1
-addressindex=1
-timestampindex=1
-spentindex=1
-zmqpubrawtx=tcp://127.0.0.1:28332
-zmqpubhashblock=tcp://127.0.0.1:28332
-rpcallowip=127.0.0.1
-rpcuser=user
-rpcpassword=password
-rpcport=18332
-reindex=1
-gen=0
-addrindex=1
-logevents=1
-```
-
-```
-$(npm bin)/siriuscore-node start
-```
+A Sirius blockchain explorer web application service for [Siriuscore Node](https://github.com/siriusproject/siriuscore-node) using the [Sirius API](https://github.com/siriusproject/insight-api).
 
 
 ## Getting Started
 
-To manually install all of the necessary components, you can run these commands:
+1. Install nvm https://github.com/creationix/nvm  
 
-```bash
-npm install -g siriuscore-node
-siriuscore-node create mynode
-cd mynode
-siriuscore-node install sirius-insight-api
-siriuscore-node install sirius-explorer
-siriuscore-node start
-```
+    ```bash
+    nvm i v6
+    nvm use v6
+    ```  
+2. Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/  
 
-Open a web browser to `http://localhost:3001/sirius-explorer`
+3. Install sirius-bitcore https://github.com/siriusproject/sirius-bitcore - with ZMQ ! 
+
+    ```bash
+    # with ZMQ
+    sudo apt-get install libzmq3-dev 
+    ```  
+4. Install siriuscore-node  
+
+    ```bash
+    npm i https://github.com/siriusproject/siriuscore-node.git#master
+
+    $(npm bin)/siriuscore-node create mynode
+
+    cd mynode
+
+    $(npm bin)/siriuscore-node install https://github.com/siriusproject/insight-api.git#master
+    $(npm bin)/siriuscore-node install https://github.com/siriusproject/sirius-explorer.git#master
+    ```  
+5. Edit siriuscore-node.json  
+
+    ```json
+    {
+      "network": "livenet",
+      "port": 3001,
+      "services": [
+        "siriusd",
+        "sirius-insight-api",
+        "sirius-explorer",
+        "web"
+      ],
+      "servicesConfig": {
+        "sirius-explorer": {
+          "apiPrefix": "sirius-insight-api",
+          "routePrefix": "sirius-explorer",
+          "nodemapLink": "https://sirius.org/en/nodemap"
+       },
+       "sirius-insight-api": {
+         "routePrefix": "sirius-insight-api",
+         "rateLimiterOptions": {
+           "whitelist": [
+             "123.456.12.34",
+             "::ffff:123.456.12.34"
+           ],
+           "whitelistLimit": 9999999,
+           "limit": 200,
+           "interval": 60000,
+           "banInterval": 3600000
+         },
+          "db": {
+            "host": "127.0.0.1",
+            "port": "27017",
+            "database": "sirius-api-livenet",
+            "user": "",
+            "password": ""
+         },
+          "erc20": {
+            "updateFromBlockHeight": 0
+          }
+        },
+        "siriusd": {
+          "spawn": {
+            "datadir": "/home/user/.sirius",
+           "exec": "/home/user/sirius-bitcore/src/siriusd"
+          }
+        }
+      }
+    }
+
+    ```  
+6. Edit sirius.conf  
+
+    ```
+    server=1
+    whitelist=127.0.0.1
+    txindex=1
+    addressindex=1
+    timestampindex=1
+    spentindex=1
+    zmqpubrawtx=tcp://127.0.0.1:28332
+    zmqpubhashblock=tcp://127.0.0.1:28332
+    rpcallowip=127.0.0.1
+    rpcuser=user
+    rpcpassword=password
+    rpcport=18332
+    reindex=1
+    gen=0
+    addrindex=1
+    logevents=1
+    ```  
+7. Run Node  
+
+    ```
+    $(npm bin)/siriuscore-node start
+    ```  
+
+8. Open a web browser to `http://localhost:3001/sirius-explorer` or `http://localhost:3001/sirius-insight-api`  
 
 ## Development
 
@@ -155,7 +159,7 @@ compile***.
 
 ## Note
 
-For more details about the [sirius API](https://github.com/siriusproject/insight-api) configuration and end-points, go to [sirius API](https://github.com/siriusproject/insight-api).
+For more details about the [Sirius API](https://github.com/siriusproject/insight-api) configuration and end-points, go to [Sirius API](https://github.com/siriusproject/insight-api).
 
 ## Contribute
 

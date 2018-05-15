@@ -31,11 +31,6 @@ function($scope, $rootScope, $route, gettextCatalog, amMoment, getSocket, Block,
                 'active_part': '/stats'
             },
             {
-                'title': gettextCatalog.getString('Nodemap'),
-                'link': Constants.NODEMAP_LINK,
-                'active_part': '/nodemap'
-            },
-            {
                 'title': gettextCatalog.getString('Charts'),
                 'link': 'charts',
                 'active_part': '/charts'
@@ -44,11 +39,6 @@ function($scope, $rootScope, $route, gettextCatalog, amMoment, getSocket, Block,
                 'title': gettextCatalog.getString('Tokens'),
                 'link': 'tokens/search',
                 'active_part': '/token'
-            },
-            {
-                'title': gettextCatalog.getString('Rich List'),
-                'link': 'rich-list',
-                'active_part': '/rich-list'
             }
         ];
 	}

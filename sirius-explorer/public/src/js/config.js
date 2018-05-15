@@ -4,7 +4,7 @@ angular.module('insight')
 .constant('Constants', {
 
 	CURRENCY: {
-		sirius : 'sirius',
+		SIRX : 'SIRX',
 		USD : 'USD',
 		mBTC : 'mBTC',
 		bits : 'bits'
@@ -20,7 +20,7 @@ angular.module('insight')
 	STORAGE_ROWS: 5,
     NETWORK: window.current_network ? window.current_network : 'livenet',
     DEFAULT_LANGUAGE: localStorage.getItem('insight-language') || 'en',
-    DEFAULT_CURRENCY: localStorage.getItem('insight-currency') || 'sirius',
+    DEFAULT_CURRENCY: localStorage.getItem('insight-currency') || 'SIRX',
 	NODEMAP_LINK: window.nodemapLink
 });
 

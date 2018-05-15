@@ -2,10 +2,10 @@
 
 angular.module('insight.networks')
 	.factory('Networks',
-		function(Constants, siriusCoreLib) {
+		function(Constants, SiriusCoreLib) {
 			return {
 				getCurrentNetwork: function () {
-					return siriusCoreLib.Networks.get(Constants.NETWORK);
+					return SiriusCoreLib.Networks.get(Constants.NETWORK);
 				}
 			}
 		});

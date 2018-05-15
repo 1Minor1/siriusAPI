@@ -14,7 +14,7 @@ function($scope, $rootScope, $window, $timeout, moment, getSocket, Blocks, Trans
 		self.txs = [];
 		self.blocks = [];
 		self.chartDays = Constants.CHART_DAYS;
-		self.rewardCurrency = Constants.CURRENCY.sirius;
+		self.rewardCurrency = Constants.CURRENCY.SIRX;
 		self.scrollConfig = {
 			autoHideScrollbar: false,
 			axis: 'y',
