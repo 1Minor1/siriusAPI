@@ -623,13 +623,13 @@ b, strong {
   .content__left {
     float: left;
     width: 53%;
-    padding-top: 115px;
+    padding-top: 15px;
     clear: both;
     padding-right: 100px; }
   .content__right {
     float: right;
     width: 47%;
-    padding-top: 115px; }
+    padding-top: 15px; }
   .content__full {
     float: left;
     width: 100%; }
@@ -683,7 +683,7 @@ b, strong {
   overflow: hidden;
   margin-bottom: 20px; }
   .heading.margin1 {
-    margin-top: 115px; }
+    margin-top: 15px; }
   .heading-width-900 {
     max-width: 900px; }
   .heading__pic {
