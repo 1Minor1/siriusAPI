@@ -1,12 +1,13 @@
 # SiriusAPI
-Projects ported from Bitcore to support the Insight API.
 
+Projects ported from Bitcore to support the Insight API.
 
 These projects require the Sirius core wallet. Clone and build the siriuscore wallet from here before you start: https://github.com/siriuscore/sirius
 
-
 Follow these scripts to install nvm, node and some required dependencies.
+
 ## Getting Started
+
 ```bash
 wget -qO- https://raw.githubusercontent.com/xtuple/nvm/master/install.sh | sudo bash
 sudo nvm install 8
@@ -20,9 +21,11 @@ sudo npm install jshint -g
 sudo npm install phantomjs-prebuilt -g
 sudo npm install grunt -g
 sudo npm install bower -g
-```  
+```
+
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 Then open a Mongodb client window and create a user in the admin database:
+
 ```
 use admin
 db.createUser(
@@ -33,16 +36,21 @@ db.createUser(
    }
 )
 ```
+
 Clone this repository into a folder called `projects` in your home directory.
+
 ```bash
 mkdir projects
 cd projects
 git clone https://github.com/SportsPodium/siriusAPI --recursive
 ```
+
 ## Project Dependencies
+
 **sirius-explorer** requires the **sirius-insight-api** that runs on **siriuscore-node** that has dependencies on **siriuscore-lib** and **siriusd-rpc**
 
 After a successful build of the siriuscore wallet, you need to create a link to the sirius daemon in the bin folder of the **siriuscore-node** project. Eg:
+
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/bin
 chmod +x siriuscore-node
@@ -50,6 +58,7 @@ ln -sf ~/sirius/src/siriusd
 ```
 
 Run **npm install** in all of the project folders.
+
 ```bash
 cd ~/projects/siriusAPI/siriusd-rpc
 npm install
@@ -69,14 +78,16 @@ npm install
 
 Then create links as specified below.
 
-
 Add the inter-project dependencies in the **siriuscore-node** node_modules directory:
+
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/node_modules/
 ln -s ~/projects/siriusAPI/siriuscore-lib
 ln -s ~/projects/siriusAPI/siriusd-rpc
 ```
+
 And then the link for the **sirius-insight-api** node_modules directory:
+
 ```bash
 cd ~/projects/siriusAPI/sirius-insight-api/node_modules/
 ln -s ~/projects/siriusAPI/siriuscore-lib
@@ -96,6 +107,7 @@ touch package.json
 ```
 
 Edit `siriuscore-node.json` with something similar to:
+
 ```json
 {
   "network": "livenet",
@@ -146,6 +158,7 @@ ln -s ~/projects/siriusAPI/sirius-explorer
 ```
 
 Make sure that the `<datadir>/sirius.conf` has the necessary settings, for example:
+
 ```
 server=1
 whitelist=127.0.0.1
@@ -166,14 +179,18 @@ rpcport=8332
 addrindex=1
 reindex=1
 ```
+
 Make sure the Sirius wallet functions properly. You only need to run with the `reindex=1` parameter once. Comment it out `#reindex=1` after a successful test:
+
 ```bash
 cd ~/sirius/src
 ./siriusd &
 ./sirius-cli getinfo
 sudo pkill siriusd
 ```
+
 From within the `devnode` directory with the configuration file, start the node:
+
 ```bash
 cd ~/projects/devnode/
 ../siriusAPI/siriuscore-node/bin/siriuscore-node start
