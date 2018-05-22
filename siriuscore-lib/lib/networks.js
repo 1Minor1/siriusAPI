@@ -129,9 +129,9 @@ function removeNetwork(network) {
 addNetwork({
   name: 'livenet',
   alias: 'mainnet',
-  pubkeyhash: 0x3a,
+  pubkeyhash: 0x3f,
   privatekey: 0x80,
-  scripthash: 0x32,
+  scripthash: 0x37,
   xpubkey: 0x0488b21e,
   xprivkey: 0x0488ade4,
   networkMagic: 0xf9beb4d9,
@@ -150,9 +150,9 @@ var livenet = get('livenet');
 addNetwork({
   name: 'testnet',
   alias: 'regtest',
-  pubkeyhash: 0x78,
+  pubkeyhash: 0x7d,
   privatekey: 0xef,
-  scripthash: 0x6e,
+  scripthash: 0x73,
   xpubkey: 0x043587cf,
   xprivkey: 0x04358394
 });
