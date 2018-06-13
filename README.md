@@ -49,12 +49,12 @@ git clone https://github.com/SportsPodium/siriusAPI --recursive
 
 **sirius-explorer** requires the **sirius-insight-api** that runs on **siriuscore-node** that has dependencies on **siriuscore-lib** and **siriusd-rpc**
 
-After a successful build of the siriuscore wallet, you need to create a link to the sirius daemon in the bin folder of the **siriuscore-node** project. Eg:
+Ensure that the siriuscore wallet built successfully.
+Then go to the **siriuscore-node** project and make sure the file in the bin folder is executable:
 
 ```bash
 cd ~/projects/siriusAPI/siriuscore-node/bin
 chmod +x siriuscore-node
-ln -sf ~/sirius/src/siriusd
 ```
 
 Run **npm install** in all of the project folders.
