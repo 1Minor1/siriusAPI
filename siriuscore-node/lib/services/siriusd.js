@@ -271,7 +271,7 @@ sirius.prototype.subscribeBalance = function(emitter, addresses) {
         }
     }
 
-    log.info(emitter.remoteAddress, 'subscribe:', 'quantumd/addressbalance', 'total:', _.size(this.subscriptions.balance));
+    log.info(emitter.remoteAddress, 'subscribe:', 'siriusd/addressbalance', 'total:', _.size(this.subscriptions.balance));
 };
 
 sirius.prototype.unsubscribeBalance = function(emitter, addresses) {
@@ -298,7 +298,7 @@ sirius.prototype.unsubscribeBalance = function(emitter, addresses) {
         }
     }
 
-    log.info(emitter.remoteAddress, 'unsubscribe:', 'quantumd/addressbalance', 'total:', _.size(this.subscriptions.balance));
+    log.info(emitter.remoteAddress, 'unsubscribe:', 'siriusd/addressbalance', 'total:', _.size(this.subscriptions.balance));
 };
 
 sirius.prototype.unsubscribeBalanceAll = function(emitter) {
@@ -312,7 +312,7 @@ sirius.prototype.unsubscribeBalanceAll = function(emitter) {
             delete this.subscriptions.balance[hashHex];
         }
     }
-    log.info(emitter.remoteAddress, 'unsubscribe:', 'quantumd/addressbalance', 'total:', _.size(this.subscriptions.balance));
+    log.info(emitter.remoteAddress, 'unsubscribe:', 'siriusd/addressbalance', 'total:', _.size(this.subscriptions.balance));
 };
 
 sirius.prototype.subscribeAddress = function(emitter, addresses) {
@@ -520,6 +520,9 @@ sirius.prototype._checkConfigIndexes = function(spawnConfig, node) {
 };
 
 sirius.prototype._resetCaches = function() {
+  this.rawTransactionCache.reset();
+  this.transactionCache.reset();
+  this.rawJsonTransactionCache.reset();
   this.transactionDetailedCache.reset();
   this.utxosCache.reset();
   this.accountInfo.reset();
@@ -742,7 +745,7 @@ sirius.prototype._notifyBalanceSubscriber = function (address, txid) {
 
         if (emitters) {
             for(var j = 0; j < emitters.length; j++) {
-                emitters[j].emit('quantumd/addressbalance', {
+                emitters[j].emit('siriusd/addressbalance', {
                     address: address,
                     txid: txid,
                     totalReceived: data.totalReceived,
@@ -2237,7 +2240,8 @@ sirius.prototype.getDetailedTransaction = function(txid, callback) {
 
     return self._tryAllClients(function(client, done) {
 
-      return async.waterfall([function (callback) {
+      return async.waterfall([
+        function (callback) {
 
           return client.getRawTransaction(txid, 1, function(err, response) {
 
@@ -2270,17 +2274,41 @@ sirius.prototype.getDetailedTransaction = function(txid, callback) {
                   tx.feeSatoshis = 0;
               }
 
-              self.transactionDetailedCache.set(txid, tx);
-
               return callback(null, tx);
               // done(null, tx);
           });
 
+      }, function(tx, callback) {
+          if (tx.height !== -1) {
+            return callback(null, tx);
+          }
+
+          return self.client.getMempoolEntry(txid, function(err, response) {
+
+            if (err && err.code !== -5) {
+              return callback(err, tx);
+            }
+
+            if (err && err.code === -5) {
+              return callback(null, tx);
+            }
+
+            var txInfo = response.result;
+
+            if (txInfo && txInfo.time) {
+              tx.receivedTime = txInfo.time;
+            }
+
+            return callback(null, tx);
+            
+          });
       }], function (err, tx) {
 
           if (err) {
               return done(self._wrapRPCError(err));
           }
+
+          self.transactionDetailedCache.set(txid, tx);
 
           return done(null, tx);
       });
@@ -2443,7 +2471,7 @@ sirius.prototype.stop = function(callback) {
 /**
  * @param {Number} minConf - The minimum confirmations to filter
  * @param {Number} maxConf - The maximum confirmations to filter
- * @param {Array} addresses - A array of quantum addresses to filter
+ * @param {Array} addresses - A array of sirius addresses to filter
  * @param {Function} callback
  */
 sirius.prototype.listUnspent = function(minConf, maxConf, addresses, callback) {

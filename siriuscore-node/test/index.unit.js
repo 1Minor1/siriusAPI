@@ -4,9 +4,9 @@ var should = require('chai').should();
 
 describe('Index Exports', function() {
   it('will export siriuscore-lib', function() {
-    var bitcore = require('../');
-    should.exist(bitcore.lib);
-    should.exist(bitcore.lib.Transaction);
-    should.exist(bitcore.lib.Block);
+    var siriuscore = require('../');
+    should.exist(siriuscore.lib);
+    should.exist(siriuscore.lib.Transaction);
+    should.exist(siriuscore.lib.Block);
   });
 });

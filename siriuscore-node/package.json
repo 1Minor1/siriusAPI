@@ -2,7 +2,7 @@
   "name": "siriuscore-node",
   "description": "Full node with extended capabilities using siriuscore and siriuscoin Core",
   "author": "sirius <foundation@sirius.org>",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "main": "./index.js",
   "repository": "https://github.com/siriusproject/siriuscore-node.git",
   "homepage": "https://github.com/siriusproject/siriuscore-node",

@@ -2,15 +2,15 @@
 
 var should = require('chai').should();
 var sinon = require('sinon');
-var bitcore = require('siriuscore-lib');
-var Networks = bitcore.Networks;
+var siriuscore = require('siriuscore-lib');
+var Networks = siriuscore.Networks;
 var proxyquire = require('proxyquire');
 var util = require('util');
 var BaseService = require('../lib/service');
 var index = require('../lib');
 var log = index.log;
 
-describe('Bitcore Node', function() {
+describe('siriuscore Node', function() {
 
   var baseConfig = {};
 
@@ -425,7 +425,7 @@ describe('Bitcore Node', function() {
 
   describe('#getNetworkName', function() {
     afterEach(function() {
-      bitcore.Networks.disableRegtest();
+      siriuscore.Networks.disableRegtest();
     });
     it('it will return the network name for livenet', function() {
       var node = new Node(baseConfig);

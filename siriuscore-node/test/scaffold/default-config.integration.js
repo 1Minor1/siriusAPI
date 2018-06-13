@@ -29,7 +29,7 @@ describe('#defaultConfig', function() {
       fs: {
         existsSync: sinon.stub().returns(false),
         writeFileSync: function(path, data) {
-          path.should.equal(process.env.HOME + '/.bitcore/bitcore-node.json');
+          path.should.equal(process.env.HOME + '/.bitcore/siriuscore-node.json');
           data.should.equal(config);
         },
         readFileSync: function() {
@@ -74,7 +74,7 @@ describe('#defaultConfig', function() {
       fs: {
         existsSync: sinon.stub().returns(false),
         writeFileSync: function(path, data) {
-          path.should.equal(process.env.HOME + '/.bitcore/bitcore-node.json');
+          path.should.equal(process.env.HOME + '/.bitcore/siriuscore-node.json');
           data.should.equal(config);
         },
         readFileSync: function() {
@@ -100,7 +100,7 @@ describe('#defaultConfig', function() {
     ]);
     var siriusd = info.config.servicesConfig.siriusd;
     should.exist(siriusd);
-      siriusd.spawn.datadir.should.equal(home + '/.sirius/data');
+      siriusd.spawn.datadir.should.equal(home + '/.bitcore/data');
       siriusd.spawn.exec.should.equal(expectedExecPath);
   });
 });

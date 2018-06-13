@@ -14,7 +14,7 @@ describe('#defaultBaseConfig', function() {
     info.config.port.should.equal(3001);
     info.config.services.should.deep.equal(['siriusd', 'web']);
     var siriusd = info.config.servicesConfig.siriusd;
-    siriusd.spawn.datadir.should.equal(home + '/.bitcoin');
+    siriusd.spawn.datadir.should.equal(home + '/.sirius');
     siriusd.spawn.exec.should.equal(path.resolve(__dirname, '../../bin/siriusd'));
   });
   it('be able to specify a network', function() {
