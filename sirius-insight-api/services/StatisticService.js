@@ -993,7 +993,19 @@ StatisticService.prototype.getTotal = function(nextCb) {
         return nextCb(null, result);
 
     });
-
+    
 };
+
+/**
+ *
+ * @return {BigNumber} supply - BigNumber representation of total supply
+ */
+StatisticService.prototype.getTotalSupply  = function() {
+    var blockHeight = this.node.services.siriusd.height;
+
+    var supply = (new BigNumber(100000000)).plus((blockHeight - 5000) * 4);
+
+    return supply;
+}
 
 module.exports = StatisticService;
