@@ -190,7 +190,7 @@ Erc20Watcher.prototype.processBlock = function (blockHeight, next) {
                     if (!receipt.length) {
                         return callback();
                     }
-
+                    
                     if (!callVouts.length) {
                         return async.setImmediate(function() {
                             return callback();
@@ -338,13 +338,14 @@ Erc20Watcher.prototype.processCreate = function (blockHeight, txHash, receipt, c
     var self = this;
 
     return async.waterfall([function (callback) {
-
+       
         return async.eachOfSeries(createVouts, function (vout, voutCreateIdx, callback) {
             if (vout.scriptPubKey && vout.scriptPubKey.type === 'create' && ContractsHelper.isErc20Contract(vout.scriptPubKey.hex)) {
 
                 var voutReceipt = receipt[vout.receiptIdx],
                     scriptHex = vout.scriptPubKey.hex,
                     contractAddress = ContractsHelper.getContractAddress(txHash, vout.n),
+                    creatorAddress = voutReceipt.from,
                     erc20Data = {
                         block_height: blockHeight,
                         tx_hash: txHash,
@@ -463,6 +464,29 @@ Erc20Watcher.prototype.processCreate = function (blockHeight, txHash, receipt, c
 
                         return callback();
                     });
+                }, function(callback) {
+
+                    var ethCreatorAddress = '0x' + creatorAddress;
+                  
+                    return self.getAddressBalance(contractAddress, ethCreatorAddress, function (err, balance) {
+                        
+                        if (err) {
+                            return callback(err);
+                        }
+
+                        var erc20BalanceObject = {
+                            address_eth: ethCreatorAddress,
+                            address: ContractsHelper.getBitAddressFromContractAddress(creatorAddress, self.node.network.pubkeyhash.toString(16)),
+                            contract_address: contractAddress,
+                            amount: balance,
+                        };
+
+                        return self.checkBalance(erc20BalanceObject, function(err, row) {
+                            return callback(err);
+                        });                                   
+
+                    });
+              
                 }], function (err) {
 
                     if (err) {
@@ -586,7 +610,7 @@ Erc20Watcher.prototype.processReceipt = function(receipt, txHash, txTime, block,
                     }], function (err) {
 
                         self.common.log.info('[ERC20WATCHER] erc20TransferData', erc20TransferData);
-
+                        
                         return callback(err);
                     });
 

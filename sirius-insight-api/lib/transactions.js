@@ -54,14 +54,15 @@ TxController.prototype.transformTransaction = function(transaction, options, cal
 
   var confirmations = 0;
   if(transaction.height >= 0) {
-    confirmations = this.node.services.siriusd.height - transaction.height + 1;
+    confirmations = this.node.services.qtumd.height - transaction.height + 1;
   }
 
   var transformed = {
     txid: transaction.hash,
     version: transaction.version,
     locktime: transaction.locktime,
-    receipt: transaction.receipt
+    receipt: transaction.receipt,
+    isqrc20Transfer: transaction.isqrc20Transfer,
   };
 
   if(transaction.coinbase) {
@@ -81,9 +82,19 @@ TxController.prototype.transformTransaction = function(transaction, options, cal
   transformed.blockhash = transaction.blockHash;
   transformed.blockheight = transaction.height;
   transformed.confirmations = confirmations;
-  // TODO consider mempool txs with receivedTime?
-  var time = transaction.blockTimestamp ? transaction.blockTimestamp : Math.round(Date.now() / 1000);
+
+  var time;
+  
+  if (transaction.blockTimestamp) {
+    time = transaction.blockTimestamp;
+  } else if (transaction.receivedTime) {
+    time = transaction.receivedTime;
+  } else {
+    time = Math.round(Date.now() / 1000);
+  }
+
   transformed.time = time;
+
   if (transformed.confirmations) {
     transformed.blocktime = transformed.time;
   }
@@ -191,7 +202,7 @@ TxController.prototype.transformInvTransaction = function(transaction) {
   return transformed;
 };
 
-TxController.prototype.transformsiriusTransaction = function(transaction) {
+TxController.prototype.transformSiriusTransaction = function(transaction) {
 
     var self = this;
 
