@@ -24,10 +24,10 @@ sudo npm install bower -g
 ```
 
 Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
-Then open a Mongodb client window and create a user in the admin database:
+Then open a Mongodb client window and create a user and database:
 
 ```
-use admin
+use sirius-api-livenet
 db.createUser(
    {
      user: "sirius",
@@ -76,6 +76,8 @@ cd ~/projects/siriusAPI/sirius-explorer
 npm install
 ```
 
+If you change anything in the sirius-explorer, also do a `bower install` and then `grunt compile` folder. Choose Angular 1.4 when bower prompts you to resolve lib versions.
+
 Then create links as specified below.
 
 Add the inter-project dependencies in the **siriuscore-node** node_modules directory:
@@ -90,6 +92,13 @@ And then the link for the **sirius-insight-api** node_modules directory:
 
 ```bash
 cd ~/projects/siriusAPI/sirius-insight-api/node_modules/
+ln -s ~/projects/siriusAPI/siriuscore-lib
+```
+
+And lastly for the **sirius-explorer** bower libs directory:
+
+```bash
+cd ~/projects/siriusAPI/sirius-explorer/public/lib/
 ln -s ~/projects/siriusAPI/siriuscore-lib
 ```
 
