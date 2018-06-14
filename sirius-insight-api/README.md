@@ -21,25 +21,118 @@
 * [Stake](#stake-statistic)
 * [Total Supply](#total-supply-statistic)
 
-A sirius blockchain REST and web socket API service for [siriuscore Node](https://github.com/siriusproject/siriuscore-node).
+A Sirius blockchain REST and web socket API service for [Siriuscore Node](https://github.com/siriusproject/siriuscore-node).
 
 This is a backend-only service. If you're looking for the web frontend application, take a look at https://github.com/siriusproject/sirius-explorer.
 
 ## Getting Started
 
-```bashl
-npm install -g siriuscore-node@latest
-siriuscore-node create mynode
-cd mynode
-siriuscore-node install sirius-insight-api
-siriuscore-node start
-```
+1. Install nvm https://github.com/creationix/nvm  
 
-The API endpoints will be available by default at: `http://localhost:3001/sirius-insight-api/`
+    ```bash
+    nvm i v6
+    nvm use v6
+    ```  
+2. Install mongo https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/  
+
+3. Install sirius-bitcore https://github.com/siriusproject/sirius-bitcore - with ZMQ ! 
+
+    ```bash
+    # with ZMQ
+    sudo apt-get install libzmq3-dev 
+    ```  
+4. Install siriuscore-node  
+
+    ```bash
+    npm i https://github.com/siriusproject/siriuscore-node.git#master
+
+    $(npm bin)/siriuscore-node create mynode
+
+    cd mynode
+
+    $(npm bin)/siriuscore-node install https://github.com/siriusproject/insight-api.git#master
+    ```  
+5. Edit siriuscore-node.json  
+
+    ```json
+    {
+      "network": "livenet",
+      "port": 3001,
+      "services": [
+        "siriusd",
+        "sirius-insight-api",
+        "web"
+      ],
+      "servicesConfig": {
+        "sirius-insight-api": {
+          "routePrefix": "sirius-insight-api",
+          "rateLimiterOptions": {
+          "whitelist": [
+             "123.456.12.34",
+             "::ffff:123.456.12.34"
+           ],
+          "whitelistLimit": 9999999,
+          "limit": 200,
+          "interval": 60000,
+          "banInterval": 3600000
+          },
+          "db": {
+            "host": "127.0.0.1",
+            "port": "27017",
+            "database": "sirius-api-livenet",
+            "user": "",
+            "password": ""
+          },
+          "erc20": {
+            "updateFromBlockHeight": 0
+          }
+        },
+        "siriusd": {
+          "spawn": {
+        	  "datadir": "/home/user/.sirius",
+            "exec": "/home/user/sirius-bitcore/src/siriusd"
+          }
+        }
+      }
+    }
+    ```  
+6. Edit sirius.conf  
+
+    ```
+    server=1
+    whitelist=127.0.0.1
+    txindex=1
+    addressindex=1
+    timestampindex=1
+    spentindex=1
+    zmqpubrawtx=tcp://127.0.0.1:28332
+    zmqpubhashblock=tcp://127.0.0.1:28332
+    rpcallowip=127.0.0.1
+    rpcuser=user
+    rpcpassword=password
+    rpcport=18332
+    reindex=1
+    gen=0
+    addrindex=1
+    logevents=1
+    ```  
+7. Run Node  
+
+    ```
+    $(npm bin)/siriuscore-node start
+    ```  
+
+8. The API endpoints will be available by default at: `http://localhost:3001/sirius-insight-api/`  
+
+## Add-on Services
+
+There add-on service available to extend the functionality of Siriuscore:
+
+- [Sirius Explorer](https://github.com/siriusproject/sirius-explorer)
 
 ## Prerequisites
 
-**Note:** You can use an existing sirius data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `sirius.conf`, as well as a few other additional fields.
+**Note:** You can use an existing Sirius data directory, however `txindex`, `addressindex`, `timestampindex` and `spentindex` needs to be set to true in `sirius.conf`, as well as a few other additional fields.
 
 
 ## Query Rate Limit
@@ -320,6 +413,25 @@ This would return:
 ### Total Supply Statistic
 
 ```
+  `GET` /insight-api/circulating-supply
+```
+or
+```
+  `GET` /insight-api/circulating-supply/?format=object
+```
+This would return:
+```
+88410384
+```
+or
+```
+{
+"circulatingSupply": "88410384"
+}
+```
+
+
+```
   `GET` /insight-api/supply
 ```
 or
@@ -586,7 +698,7 @@ POST response:
   /insight-api/peer
 ```
 
-### Status of the sirius Network
+### Status of the Sirius Network
 ```
   /insight-api/status?q=xxx
 ```

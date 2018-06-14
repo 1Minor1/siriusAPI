@@ -1,7 +1,7 @@
 {
   "name": "siriusd-rpc",
-  "description": "sirius Client Library to connect to sirius Core via RPC",
-  "version": "0.0.3",
+  "description": "Sirius Client Library to connect to Sirius Core via RPC",
+  "version": "0.0.4",
   "author": {},
   "contributors": [],
   "keywords": [

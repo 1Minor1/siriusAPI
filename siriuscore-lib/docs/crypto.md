@@ -1,4 +1,4 @@
-# sirius Crypto
+# Sirius Crypto
 
 ## Random
 The `siriuscore.crypto.Random` namespace contains a single function, named `getRandomBuffer(size)` that returns a `Buffer` instance with random bytes. It may not work depending on the engine that siriuscore is running on (doesn't work with IE versions lesser than 11).

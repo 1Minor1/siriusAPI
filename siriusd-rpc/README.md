@@ -1,7 +1,7 @@
 siriusd-rpc.js
 ===============
 
-A client library to connect to sirius Core RPC in JavaScript.
+A client library to connect to Sirius Core RPC in JavaScript.
 
 ## Get Started
 

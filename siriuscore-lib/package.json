@@ -1,8 +1,8 @@
 {
   "name": "siriuscore-lib",
   "version": "0.0.1",
-  "description": "A pure and powerful JavaScript sirius library.",
-  "author": "sirius <foundation@sirius.org>",
+  "description": "A pure and powerful JavaScript Sirius library.",
+  "author": "Sirius <foundation@sirius.org>",
   "main": "index.js",
   "scripts": {
     "lint": "gulp lint",
@@ -41,7 +41,7 @@
     "buffer-compare": "=1.0.0",
     "elliptic": "=3.0.3",
     "inherits": "=2.0.1",
-    "lodash": "^3.10.1"
+    "lodash": "=3.10.1"
   },
   "devDependencies": {
     "bitcore-build": "bitpay/bitcore-build",

@@ -1,6 +1,6 @@
 ## Principles
 
-sirius is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the sirius network allows for highly resilient sirius infrastructure, and the developer community needs reliable, open-source tools to implement sirius apps and services. siriuscore provides a reliable API for JavaScript apps that need to interface with sirius.
+Sirius is a powerful new peer-to-peer platform for the next generation of financial technology. The decentralized nature of the Sirius network allows for highly resilient Sirius infrastructure, and the developer community needs reliable, open-source tools to implement Sirius apps and services. Siriuscore provides a reliable API for JavaScript apps that need to interface with SIRX.
 
 # Documentation Index
 
@@ -13,10 +13,10 @@ sirius is a powerful new peer-to-peer platform for the next generation of financ
 
 ## Payment Handling
 * [Using Different Units](unit.md)
-* [Acknowledging and Requesting Payments: sirius URIs](uri.md)
+* [Acknowledging and Requesting Payments: Sirius URIs](uri.md)
 * [The Transaction Class](transaction.md)
 
-## sirius Internals
+## Sirius Internals
 * [Scripts](script.md)
 * [Block](block.md)
 

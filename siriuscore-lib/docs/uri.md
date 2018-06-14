@@ -1,5 +1,5 @@
-# sirius URIs
-Represents a sirius payment URI. sirius URI strings became the most popular way to share payment request, sometimes as a sirius link and others using a QR code.
+# Sirius URIs
+Represents a Sirius payment URI. Sirius URI strings became the most popular way to share payment request, sometimes as a Sirius link and others using a QR code.
 
 URI Examples:
 
@@ -22,10 +22,10 @@ console.log(uri.address.network, uri.amount); // 'livenet', 120000000
 ```
 
 ## URI Parameters
-All standard parameters can be found as members of the `URI` instance. However a sirius URI may contain other non-standard parameters, all those can be found under the `extra` namespace.
+All standard parameters can be found as members of the `URI` instance. However a Sirius URI may contain other non-standard parameters, all those can be found under the `extra` namespace.
 
 ## Create URI
-Another important use case for the `URI` class is creating a sirius URI for sharing a payment request. That can be accomplished by using a dictionary to create an instance of URI.
+Another important use case for the `URI` class is creating a Sirius URI for sharing a payment request. That can be accomplished by using a dictionary to create an instance of URI.
 
 The code for creating an URI from an Object looks like this:
 

@@ -1,6 +1,6 @@
 {
   "name": "sirius-insight-api",
-  "description": "A sirius blockchain REST and web socket API service for Siriuscore Node.",
+  "description": "A Sirius blockchain REST and web socket API service for Siriuscore Node.",
   "version": "0.0.23",
   "repository": "https://github.com/siriusproject/insight-api.git",
   "contributors": [],

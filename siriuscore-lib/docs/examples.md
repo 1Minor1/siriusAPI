@@ -1,4 +1,4 @@
-# siriuscore examples
+# Siriuscore examples
 
 ## Generate a random address
 ```javascript
@@ -40,7 +40,7 @@ var transaction = new siriuscore.Transaction()
   .sign(privateKey);
 ```
 
-## Sign a sirius message
+## Sign a Sirius message
 ```javascript
 var Message = require('siriuscore-message');
 
@@ -50,7 +50,7 @@ var message = new Message('This is an example of a signed message.');
 var signature = message.sign(privateKey);
 ```
 
-## Verify a sirius message
+## Verify a Sirius message
 ```javascript
 var Message = require('siriuscore-message');
 

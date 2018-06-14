@@ -1,8 +1,8 @@
-# sirius Address
-Represents a sirius address. Addresses are the most popular way to make sirius transactions.
+# Sirius Address
+Represents a Sirius address. Addresses are the most popular way to make Sirius transactions.
 
 ## Instantiate an Address
-To be able to receive siriuss an address is needed, but in order to spend them a private key is necessary. Please take a look at the [`PrivateKey`](privatekey.md) docs for more information about exporting and saving a key.  
+To be able to receive SIRXs an address is needed, but in order to spend them a private key is necessary. Please take a look at the [`PrivateKey`](privatekey.md) docs for more information about exporting and saving a key.  
 
 ```javascript
 var privateKey = new PrivateKey();
@@ -34,7 +34,7 @@ var p2shAddress = new Address([publicKey1, publicKey2, publicKey3], 2);
 ```
 
 ## Validating an Address
-The main use that we expect you'll have for the `Address` class in siriuscore is validating that an address is a valid one, what type of address it is (you may be interested on knowing if the address is a simple "pay to public key hash" address or a "pay to script hash" address) and what network does the address belong to.
+The main use that we expect you'll have for the `Address` class in Siriuscore is validating that an address is a valid one, what type of address it is (you may be interested on knowing if the address is a simple "pay to public key hash" address or a "pay to script hash" address) and what network does the address belong to.
 
 The code to do these validations looks like this:
 

@@ -1,7 +1,7 @@
-siriuscore Library
+Siriuscore Library
 =======
 
-A pure and powerful JavaScript sirius library.
+A pure and powerful JavaScript Sirius library.
 
 
 ## Get Started

@@ -61,7 +61,7 @@ function rpc(request, callback) {
 
   var called = false;
 
-  var errorMessage = 'sirius JSON-RPC: ';
+  var errorMessage = 'Sirius JSON-RPC: ';
 
   var req = this.protocol.request(options, function(res) {
 
@@ -86,7 +86,7 @@ function rpc(request, callback) {
         return;
       }
       if (res.statusCode === 500 && buf.toString('utf8') === 'Work queue depth exceeded') {
-        var exceededError = new Error('sirius JSON-RPC: ' + buf.toString('utf8'));
+        var exceededError = new Error('Sirius JSON-RPC: ' + buf.toString('utf8'));
         exceededError.code = 429; // Too many requests
         callback(exceededError);
         return;
@@ -168,6 +168,7 @@ RpcClient.callspec = {
   getGenerate: '',
   getHashesPerSec: '',
   getInfo: '',
+  getMempoolEntry: 'str',
   getMemoryPool: '',
   getMemPoolInfo: '',
   getMiningInfo: '',
