@@ -588,7 +588,7 @@ Erc20Controller.prototype.findBalancesByTransferAddress = function(req, res) {
 
 };
 
-Erc20Controller.prototype.findQrc20Contracts = function(req, res) {
+Erc20Controller.prototype.findErc20Contracts = function(req, res) {
 
     var self = this,
         query = req.query.query;

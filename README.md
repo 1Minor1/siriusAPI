@@ -74,11 +74,12 @@ npm install
 
 cd ~/projects/siriusAPI/sirius-explorer
 npm install
+bower install
 ```
 
-If you change anything in the sirius-explorer, also do a `bower install` and then `grunt compile` folder. Choose Angular 1.4 when bower prompts you to resolve lib versions.
+Choose Angular 1.4 when bower prompts you to resolve lib versions. If you change anything in **sirius-explorer**, also run `grunt compile` to generate the js and css files.
 
-Then create links as specified below.
+Create project links as specified below.
 
 Add the inter-project dependencies in the **siriuscore-node** node_modules directory:
 
@@ -160,7 +161,6 @@ Setup symlinks for all of the (locally cloned) services and dependencies:
 
 ```bash
 cd node_modules
-ln -s ~/projects/siriusAPI/siriuscore-lib
 ln -s ~/projects/siriusAPI/siriuscore-node
 ln -s ~/projects/siriusAPI/sirius-insight-api
 ln -s ~/projects/siriusAPI/sirius-explorer
@@ -210,5 +210,3 @@ http://localhost:3001/sirius-insight-api/status
 
 Open the Block Explorer:
 http://localhost:3001/sirius-explorer/
-
-When you make changes to the sirius-explorer project, you will have to do a `bower install` once and then run `grunt compile` to affect changes to source files.

@@ -365,9 +365,9 @@ InsightAPI.prototype.setupRoutes = function(app) {
 
   app.get('/tokens', this.cacheShort(), erc20Controller.getAllTokens.bind(erc20Controller));
 
-  app.get('/erc20/search', this.cacheShort(), erc20Controller.findQrc20Contracts.bind(erc20Controller));
+  app.get('/erc20/search', this.cacheShort(), erc20Controller.findErc20Contracts.bind(erc20Controller));
   app.get('/erc20/balances', this.cacheShort(), erc20Controller.findBalancesByTransferAddress.bind(erc20Controller));
-  app.get('/qrc20/:contractAddress', this.cacheShort(), erc20Controller.getInfo.bind(erc20Controller));
+  app.get('/erc20/:contractAddress', this.cacheShort(), erc20Controller.getInfo.bind(erc20Controller));
   app.get('/erc20/:contractAddress', this.cacheShort(), erc20Controller.getInfo.bind(erc20Controller));//TODO:: rm / DEPRECATED
   app.get('/erc20/:contractAddress/transfers', this.cacheShort(), erc20Controller.getTransfers.bind(erc20Controller));
   app.get('/erc20/:contractAddress/balances', this.cacheShort(), erc20Controller.getBalances.bind(erc20Controller));

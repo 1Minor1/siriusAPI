@@ -8,9 +8,9 @@
 ## Table of Contents
 * [Getting Started](#getting-started)
 * [DGP info](#dgpinfo)
-* [QRC20 info](#qrc20-info)
-* [QRC20 transfers](#qrc20-transfers)
-* [QRC20 balances](#qrc20-balances)
+* [ERC20 info](#erc20-info)
+* [ERC20 transfers](#erc20-transfers)
+* [ERC20 balances](#erc20-balances)
 
 ### Statistics
 * [Total 24h](#total-24h-statistic)
@@ -622,22 +622,22 @@ resp:
 }
 ```
 
-### QRC20 info
+### ERC20 info
 ```
   /insight-api/erc20/:contractAddress
   > DEPRECATED
 ```
     
 ```
-  /insight-api/qrc20/:contractAddress
+  /insight-api/erc20/:contractAddress
 ```
 
-### QRC20 transfers
+### ERC20 transfers
 ```
   /insight-api/erc20/:contractAddress/transfers
 ```
 
-### QRC20 balances
+### ERC20 balances
 ```
   /insight-api/erc20/:contractAddress/balances
 ```

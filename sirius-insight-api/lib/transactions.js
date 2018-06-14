@@ -62,7 +62,7 @@ TxController.prototype.transformTransaction = function(transaction, options, cal
     version: transaction.version,
     locktime: transaction.locktime,
     receipt: transaction.receipt,
-    isqrc20Transfer: transaction.isqrc20Transfer,
+    isErc20Transfer: transaction.isErc20Transfer,
   };
 
   if(transaction.coinbase) {

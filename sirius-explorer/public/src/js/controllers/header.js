@@ -31,9 +31,14 @@ function($scope, $rootScope, $route, gettextCatalog, amMoment, getSocket, Block,
                 'active_part': '/stats'
             },
             {
-                'title': gettextCatalog.getString('Charts'),
+                'title': gettextCatalog.getString('Circulation'),
                 'link': 'charts',
                 'active_part': '/charts'
+            },
+            {
+                'title': gettextCatalog.getString('Rich List'),
+                'link': 'rich-list',
+                'active_part': '/rich-list'
             },
             {
                 'title': gettextCatalog.getString('Tokens'),
